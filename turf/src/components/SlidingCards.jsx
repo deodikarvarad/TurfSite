@@ -1,4 +1,3 @@
-// src/SlidingCards.jsx
 import React, { useRef } from 'react';
 
 function SlidingCards() {
@@ -53,7 +52,7 @@ function SlidingCards() {
   ];
 
   return (
-    <div className="pt-28 relative">
+    <div className="pt-0 relative">
       <button
         onClick={scrollLeft}
         className=" absolute top-1/2 left-0 transform -translate-y-1/2 bg-transparent text-white p-2 rounded-full hover:bg-gray-600 "

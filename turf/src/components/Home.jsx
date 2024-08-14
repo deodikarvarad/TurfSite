@@ -7,12 +7,12 @@ function App() {
       <nav className="w-full bg-transparent p-4 fixed top-0 left-0 z-10">
         <div className="container mx-auto flex items-center justify-between px-4">
           {/* Logo or Brand */}
-          <div className="text-white text-xl font-bold">
+          <div className="text-white text-xl font-bold hover:text-black">
             BookMyTurf
           </div>
           
           {/* Search Bar */}
-          <div className="flex-grow mx-4">
+          <div className="flex-grow mx-4 hover: bg-black">
             <input
               type="text"
               placeholder="Search for Turfs near you..."
@@ -25,8 +25,8 @@ function App() {
             <select className="transition ease-in-out delay-150 bg-transparent hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300 p-3 rounded-md" >
               <option value="location">Set Location</option>
               <option value="mumbai">Mumbai</option>
-              <option value="delhi">Delhi</option>
-              <option value="bangalore">Bangalore</option>
+              <option value="pune">Pune</option>
+              <option value="chatrapati sambhajinagar">Chatrapati Sambhajinagar</option>
               {/* Add more locations as needed */}
             </select>
           </div>
