@@ -18,13 +18,13 @@ function App() {
             <input
               type="text"
               placeholder="Search for Turfs near you..."
-              className="w-full p-2 rounded-md text-black border-black"
+              className="w-full p-2 rounded-md text-black border-black shadow-md caret-black"
             />
           </div>
           
           {/* Location Setter */}
-          <div className="text-black mx-4">
-            <select className="bg-transparent text-white hover:bg-white hover:text-black p-2 rounded-md hover:delay-100">
+          <div className="text-white hover:text-black mx-4">
+            <select className="transition ease-in-out delay-150 bg-transparent hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300 p-3 rounded-md" >
               <option value="location">Set Location</option>
               <option value="mumbai">Mumbai</option>
               <option value="delhi">Delhi</option>
@@ -34,11 +34,11 @@ function App() {
           </div>
           
           {/* Sign In/Sign Up */}
-          <div className="text-black flex space-x-4">
-            <button className="bg-transparent hover:bg-white hover:text-black hover:delay-100 text-white py-2 px-4 rounded-md">
+          <div className="text-white hover:text-black flex space-x-4">
+            <button className="transition ease-in-out delay-150 bg-transparent hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300 ">
               Sign In
             </button>
-            <button className="bg-transparent hover:bg-white hover:text-black hover:delay-100 text-white py-2 px-4 rounded-md">
+            <button className="transition ease-in-out delay-150 bg-transparent hover:-translate-y-1 hover:scale-110 hover:bg-white duration-300 ">
               Sign Up
             </button>
           </div>
