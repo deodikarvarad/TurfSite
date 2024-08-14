@@ -1,11 +1,9 @@
 import { useState } from 'react';
 
 function App() {
-  const [color, setColor] = useState("black");
-
   return (
     <>
-      <div className="w-full h-screen overflow-x-hidden" style={{ backgroundColor: color }}>
+      <div className="w-full h-screen overflow-x-hidden">
       <nav className="w-full bg-transparent p-4 fixed top-0 left-0 z-10">
         <div className="container mx-auto flex items-center justify-between px-4">
           {/* Logo or Brand */}
