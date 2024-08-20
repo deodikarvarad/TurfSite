@@ -53,6 +53,7 @@ function SlidingCards() {
 
   return (
     <div className="pt-0 relative">
+      <div className=" text-left pl-5 text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">Recommended Turfs</div>
       <button
         onClick={scrollLeft}
         className=" absolute top-1/2 left-0 transform -translate-y-1/2 bg-transparent text-white p-2 rounded-full hover:bg-gray-600 "
@@ -64,8 +65,8 @@ function SlidingCards() {
         className="flex overflow-x-auto space-x-4 p-4"
       >
         {cards.map((card, index) => (
-          <div key={index} className="flex-shrink-0 w-64 overflow-hidden transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-yellow-100 hover:text-grey-600 duration-300 p-3 rounded-xl ">
-            <img  src={card.image} alt={card.title} className="w-full h-40 object-fit rounded-md" />
+          <div key={index} className="flex-shrink-0 w-64 overflow-hidden transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 hover:text-grey-600 duration-300 p-3 rounded-xl ">
+            <img  src={card.image} alt={card.title} className="w-full h-40 object-fit rounded-md hover:transform transition-transform duration-300 hover:scale-110" />
             <div className="p-4"> 
               <h3 className="text-lg font-semibold">{card.title}</h3>
               <p className="mt-2 text-sm text-black hover:text-gray-600">{card.description}</p>
@@ -84,5 +85,3 @@ function SlidingCards() {
 }
 
 export default SlidingCards;
-
-  
