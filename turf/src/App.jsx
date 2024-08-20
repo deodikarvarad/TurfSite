@@ -5,7 +5,7 @@ import Home from './components/Home'
 import SlidingCards from './components/SlidingCards'
 import MainContainer from './components/MainContainer'
 import Footer from './components/Footer'
-import About from './About'
+import About from './components/About'
 import CardBox from './components/CardBox'
 
 
