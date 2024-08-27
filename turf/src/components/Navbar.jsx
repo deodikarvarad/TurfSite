@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-function Home() {
+function Navbar() {
   return (
     <>
-      <div className="w-full h-screen overflow-x-hidden">
+      <div className="w-full  overflow-x-hidden">
       <nav className="w-full bg-transparent p-4 fixed top-0 left-0 z-10">
         <div className="container mx-auto flex items-center justify-between px-4">
           {/* Logo or Brand */}
@@ -51,4 +51,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Navbar;
