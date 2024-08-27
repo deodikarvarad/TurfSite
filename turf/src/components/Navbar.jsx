@@ -1,22 +1,34 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 function Navbar() {
+
+  const handleBookTurf = ()=>{
+    const mainsec =document.getElementById('cards-turf')
+    if (mainsec){
+      mainsec.scrollIntoView({behavior:"smooth"})
+    }
+  }
   return (
     <>
       <div className="w-full  overflow-x-hidden">
       <nav className="w-full bg-transparent p-4 fixed top-0 left-0 z-10">
         <div className="container mx-auto flex items-center justify-between px-4">
           {/* Logo or Brand */}
-          <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-500">
-            BookMyTurf
-          </div>
+          <button onClick={handleBookTurf}
+  className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-500 hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500 transition duration-300 "
+>
+  BookMyTurf
+</button>
+
           
           {/* Search Bar */}
           <div className="flex-grow mx-4 hover: bg-black">
             <input
+            className="w-4 p-2 rounded-md text-black border-black hover:border-black shadow-md caret-black"
               type="text"
               placeholder="Search for Turfs near you..."
-              className="w-full p-2 rounded-md text-black border-black hover:border-black shadow-md caret-black"
+              
             />
           </div>
           
@@ -38,6 +50,9 @@ function Navbar() {
             </button>
             <button className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ">
               Sign Up
+            </button>
+            <button>
+              Profile
             </button>
           </div>
         </div>

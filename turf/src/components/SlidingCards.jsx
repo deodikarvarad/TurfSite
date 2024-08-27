@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import {useNavigate} from 'react-router-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Turf from './Turf';
+
 
 function SlidingCards() {
   const sliderRef = useRef(null);
@@ -61,7 +61,7 @@ function SlidingCards() {
 
   return (
     <div className="pt-0 relative">
-      <div className=" text-left pl-5 text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">Recommended Turfs
+      <div className=" text-left pl-5 text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">Recommended For You
       </div>
       <button onClick={handleShowAll} className="ml-auto">Show All</button>
       
