@@ -7,10 +7,11 @@ import Footer from './components/Footer';
 import About from './components/About';
 import Home from './components/Home';
 
+
 function App() {
   return (
     <Router>
-      <Navbar className="mb-0" /> 
+      <Navbar className="" /> 
       <Routes>
          <Route path='/' element ={<Home/>}/>
           

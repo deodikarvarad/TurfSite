@@ -60,10 +60,10 @@ function SlidingCards() {
   ];
 
   return (
-    <div className="pt-0 relative">
-      <div className=" text-left pl-5 text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">Recommended For You
+    <div className="pt-0 relative flex-row">
+      <div className="w-140 text-left pl-5 pt-24 text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">Recommended For You 
+      <button className="ml-10 bg-blue-300 text-blue-950" onClick={handleShowAll} >Show All</button>
       </div>
-      <button onClick={handleShowAll} className="ml-auto">Show All</button>
       
       <button
         onClick={scrollLeft}

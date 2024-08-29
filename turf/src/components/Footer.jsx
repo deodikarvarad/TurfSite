@@ -1,9 +1,8 @@
-
 import React from 'react';
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-8 mt-16 max-w-full">
+    <footer className="bg-gray-900 text-white  bottom-0 w-full">
       <div className="container mx-auto px-4 text-center">
         <p className="text-lg font-bold">BookMyTurf</p>
         <div className="mt-4 space-x-4">
