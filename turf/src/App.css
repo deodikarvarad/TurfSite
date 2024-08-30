@@ -54,7 +54,10 @@ body {
 }
 
 main {
-  flex: 1;
+  flex: 1; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
 }
 
 /* Ensure footer is at the bottom of the page */

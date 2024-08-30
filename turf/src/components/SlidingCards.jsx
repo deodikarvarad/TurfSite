@@ -60,38 +60,47 @@ function SlidingCards() {
   ];
 
   return (
-    <div className="pt-0 relative flex-row">
-      <div className="w-140 text-left pl-5 pt-24 text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">Recommended For You 
-      <button className="ml-10 bg-blue-300 text-blue-950" onClick={handleShowAll} >Show All</button>
-      </div>
-      
-      <button
+    <div className="pt-0 relative flex-row overflow-x-auto w-max ">
+    <div className="mt-4 flex flex-row h-60 items-center justify-between px-5">
+        <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">
+            Recommended For You
+        </h1>
+        <button
+            className="h-11 px-6 mr-8 bg-blue-300 text-blue-950 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+            onClick={handleShowAll}
+        >
+            Show All
+        </button>
+    </div>
+
+    <button
         onClick={scrollLeft}
-        className=" absolute top-1/2 left-0 transform -translate-y-1/2 bg-transparent text-white p-2 rounded-full hover:bg-gray-600 "
-      >
+        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-transparent text-white p-2 rounded-full hover:bg-gray-600"
+    >
         &lt;
-      </button>
-      <div
+    </button>
+    <div
         ref={sliderRef}
         className="flex overflow-x-auto space-x-4 p-4"
-      >
+    >
         {cards.map((card, index) => (
-          <div key={index} className="flex-shrink-0 w-64 overflow-hidden transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 hover:text-grey-600 duration-300 p-3 rounded-xl ">
-            <img  src={card.image} alt={card.title} className="w-full h-40 object-fit rounded-md hover:transform transition-transform duration-300 hover:scale-110" />
-            <div className="p-4"> 
-              <h3 className="text-lg font-semibold">{card.title}</h3>
-              <p className="mt-2 text-sm text-black hover:text-gray-600">{card.description}</p>
+            <div key={index} className="flex-shrink-0 w-64 overflow-hidden transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 hover:text-grey-600 duration-300 p-3 rounded-xl">
+                <img src={card.image} alt={card.title} className="w-full h-40 object-cover rounded-md hover:transform transition-transform duration-300 hover:scale-110" />
+                <div className="p-4">
+                    <h3 className="text-lg font-semibold">{card.title}</h3>
+                    <p className="mt-1 text-sm text-black hover:text-gray-600">{card.description}</p>
+                </div>
             </div>
-          </div>
         ))}
-      </div>
-      <button
+    </div>
+    <button
         onClick={scrollRight}
         className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-transparent text-white p-2 rounded-full hover:bg-gray-600"
-      >
+    >
         &gt;
-      </button>
-    </div>
+    </button>
+</div>
+
   );
 }
 

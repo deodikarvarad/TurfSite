@@ -9,7 +9,7 @@ import About from "./About";
 function Home(){
     return (
         <>
-        <div className="Slider-turf" >
+        <div className="Slider-turf">
             <div className="first-div" id="cards-turf"></div>
             <SlidingCards/>
         </div>

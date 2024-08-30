@@ -10,6 +10,7 @@ import Home from './components/Home';
 
 function App() {
   return (
+    <div className="flex flex-col min-h-screen">
     <Router>
       <Navbar className="" /> 
       <Routes>
@@ -19,6 +20,7 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+    </div>
   );
 }
 
