@@ -10,7 +10,7 @@ function Footer() {
           <a href="#" className="text-gray-400 hover:text-white">Home</a>
           <a href="/turf" className="text-gray-400 hover:text-white">Turfs</a>
           <a href="#" className="text-gray-400 hover:text-white">Courts</a>
-          <a href="#" className="text-gray-400 hover:text-white">Contact</a>
+          <a href="#" className="text-gray-400 hover:text-white">Contact Us</a>
         </div>
         <div className="mt-6 space-x-4">
           <a href="#" className="text-gray-400 hover:text-white">Facebook</a>

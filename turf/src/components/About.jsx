@@ -3,8 +3,8 @@ function About() {
 
     return ( 
         <>
-        <div className="bg-transparent">
-            <h1 className="font-bold pb-20">About Us</h1>
+        <div className="bg-transparent pl-3">
+            <h1 className="font-bold pt-24">About Us</h1>
             <div className="pt-5">
                 <h3 className="font-bold">Our Mission</h3>
                 <p>
