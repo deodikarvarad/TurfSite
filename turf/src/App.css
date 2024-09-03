@@ -40,3 +40,27 @@
 .read-the-docs {
   color: #888;
 }
+
+
+
+html, body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
+
+/* Ensure footer is at the bottom of the page */
+footer {
+  margin-top: auto; /* Push footer to the bottom */
+}

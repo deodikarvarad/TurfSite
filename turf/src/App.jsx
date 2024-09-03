@@ -1,24 +1,30 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SlidingCards from './components/SlidingCards';
-import Turf from './components/Turf'; 
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import About from './components/About';
-import Home from './components/Home';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/UserLogin/Navbar';
+import Footer from './components/UserLogin/Footer';
+import Loginpage from './components/UserLogin/Loginpage';
+import Home from './components/UserLogin/Home';
+import Turf from './components/UserLogin/Turf';
 
-function App() {
+function MainLayout() {
   return (
-    <Router>
-      <Navbar className="mb-0" /> 
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
       <Routes>
-         <Route path='/' element ={<Home/>}/>
-          
-        <Route path="/turf" element={<Turf />} /> 
+        <Route path='/' element={<Home />} />
+        <Route path='/turf' element={<Turf />} />
       </Routes>
       <Footer />
-    </Router>
+    </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path='/userlogin' element={<Loginpage />} />
+        <Route path='/*' element={<MainLayout />} />
+      </Routes>
+    </Router>
+  );
+}

@@ -4,7 +4,7 @@ function About() {
     return ( 
         <>
         <div className="bg-transparent">
-            <h1 className="font-bold pb-20">About Us</h1>
+            <h1 className="font-bold pb-20 flex justify-center text-orange-700 ">About Us</h1>
             <div className="pt-5">
                 <h3 className="font-bold">Our Mission</h3>
                 <p>
