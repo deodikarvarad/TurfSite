@@ -1,11 +1,33 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
   const navigate = useNavigate(); 
+  const [dropdownOpen,setdropdownOpen] = useState(false);
+  const [citydropdownOpen,setcitydropdownOpen] = useState(false);
+
+  
 
   const handleBookTurf = () => {
     navigate('/'); 
   };
+
+  const mouseonProfile =()=>{
+    setdropdownOpen(true)
+  }
+
+  const mouseleaveProfile =()=>{
+    setdropdownOpen(false)
+  }
+
+  const mouseonCity =()=>{
+    setcitydropdownOpen(true)
+  }
+
+  const mouseleaveCity =()=>{
+    setcitydropdownOpen(false)
+  }
+  
 
   return (
     <>
@@ -27,32 +49,48 @@ function Navbar() {
               />
             </div>
 
-            <div className="text-white hover:text-black mx-4">
-              <select className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 p-3 rounded-md">
-              <option value="chatrapati sambhajinagar">Chatrapati Sambhajinagar</option>
-                <option value="mumbai">Mumbai</option>
-                <option value="pune">Pune</option>
+            <div 
+            onMouseEnter={mouseonCity}
+            onMouseLeave={mouseleaveCity}
+            className="text-white hover:text-black flex space-x-4 mr-2">
+
+            <button
+            className='transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>
+            Select City
+            
+            </button>
+
+            {citydropdownOpen&&(
+              <div className="absolute right-24 mt-12 w-48 bg-white shadow-lg rounded-lg py-2">
+              <ul >
+              <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer'>Chatrapati Sambhajinagar</li>
+                <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer'>Mumbai</li>
+                <li className='px-4 py-2 hover:bg-gray-200 cursor-pointer'>Pune</li>
                 
-              </select>
+              </ul>
+              </div>  
+            )}
             </div>
 
-            <div className="text-white hover:text-black flex space-x-4">
-              {/* <button className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
-                Sign In
-              </button>
-              <button className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300">
-                Sign Up
-              </button> */}
-              <button className='transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>
+            <div 
+            onMouseEnter={mouseonProfile}
+            onMouseLeave={mouseleaveProfile}
+            className="text-white hover:text-black flex space-x-4">
+              
+              <button
+               className='transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>
                 Profile
-                {/* <option value="userdashboard">Dashboard</option>
-                <option value="mybookings">My Bookings</option>
-                <option value="favorites">Favorites</option>
-                <option value="accsettings">Account Settings</option>
-                <option value="logout">Logout</option>
                 
-                <option></option> */}
               </button>
+              {dropdownOpen &&(
+                <div className="absolute right-0 mt-12 w-48 bg-white shadow-lg rounded-lg py-2">
+                  <ul>
+                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Log In</li>
+                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Sign Up</li>
+                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">My Profile</li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </nav>
