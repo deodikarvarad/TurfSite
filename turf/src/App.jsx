@@ -4,6 +4,7 @@ import Footer from './components/UserLogin/Footer';
 import Loginpage from './components/UserLogin/Loginpage';
 import Home from './components/UserLogin/Home';
 import Turf from './components/UserLogin/Turf';
+import CreateUser from './components/UserLogin/CreateUserpage';
 
 function MainLayout() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path='/userlogin' element={<Loginpage />} />
+        <Route path='userCreate' element={<CreateUser/>}/>
         <Route path='/*' element={<MainLayout />} />
       </Routes>
     </Router>
