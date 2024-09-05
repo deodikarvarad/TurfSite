@@ -24,12 +24,12 @@ function Loginpage(){
                 <input 
                 type="email" 
                 placeholder="Email"
-                className="w-full text-black font-sans py-4 my-2 bg-transparent border-b border-black outline-none focus:outline-none"/>
+                className="w-full text-black font-sans py-4 my-2 bg-transparent border-b border-black outline-none focus:outline-none font-semibold"/>
 
                 <input 
                 type="password" 
                 placeholder="Password"
-                className="w-full text-black font-sans py-4 my-2 bg-transparent border-b border-black outline-none focus:outline-none"/>
+                className="w-full text-black font-sans py-4 my-2 bg-transparent border-b border-black outline-none focus:outline-none font-semibold"/>
             </div>
 
             <div className="w-full pt-2 items-center">
@@ -45,7 +45,7 @@ function Loginpage(){
                 
 
                 <div className="w-full flex flex-col pt-8">
-                    <button className="bg-black text-white hover:bg-slate-900 p-4">Log In</button>
+                    <button className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white hover:bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500 p-4 font-sans font-semibold text-xl">Log In</button>
                 </div>
 
                 <div className="w-full flex items-center justify-center relative pt-8">
@@ -54,8 +54,8 @@ function Loginpage(){
                 </div>
                 
                 <div className="pt-6 items-center justify-center flex flex-row pb-8">
-                <button className="rounded-full hover:bg-black"><img src={Google} className="h-10 " alt="" /></button>
-                <button className="rounded-full hover:bg-black"><img src={Facebook} className="h-10 " alt="" /></button>
+                <button className="rounded-full hover:bg-white"><img src={Google} className="h-10 " alt="" /></button>
+                <button className="rounded-full hover:bg-sky-600"><img src={Facebook} className="h-10 " alt="" /></button>
                 <button className="rounded-full hover:bg-black"><img src={Twitter} className="h-10 " alt="" /></button>
                 </div>
                 
