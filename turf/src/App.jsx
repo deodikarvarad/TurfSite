@@ -24,7 +24,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path='/userlogin' element={<Loginpage />} />
-        <Route path='userCreate' element={<CreateUser/>}/>
+        <Route path='/usercreate' element={<CreateUser/>}/>
         <Route path='/*' element={<MainLayout />} />
       </Routes>
     </Router>
