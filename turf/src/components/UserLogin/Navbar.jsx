@@ -44,14 +44,14 @@ function Navbar() {
           <div className="container mx-auto flex items-center justify-between px-4">
             <button
               onClick={handleBookTurf}
-              className="text-xl font-bold text-transparent bg-clip-text bg-blue-500 ml-0 "
+              className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via bg-red-500 to-yellow-500 ml-0 "
             >
               BookMyTurf
             </button>
 
-            <div className="flex-grow mx-4 hover:bg-black">
+            <div className="flex-grow mx-4 border-black">
               <input
-                className="w-full  p-2 rounded-md text-white  "
+                className="w-full p-2 rounded-md text-black "
                 type="text"
                 placeholder="Search for Turfs near you..."
               />
@@ -60,10 +60,10 @@ function Navbar() {
             <div 
             onMouseEnter={mouseonCity}
             onMouseLeave={mouseleaveCity}
-            className="text-white hover:text-black flex space-x-4 mr-2">
+            className="text-white hover:text-black flex space-x-4 mr-2 ">
 
             <button
-            className='transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>
+            className='transition ease-in-out delay-150 bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>
             Select City
             
             </button>
@@ -86,7 +86,7 @@ function Navbar() {
             className="text-white hover:text-black flex space-x-4">
               
               <button
-               className='transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>
+               className='transition ease-in-out delay-150 bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-500  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>
                 Profile
                 
               </button>

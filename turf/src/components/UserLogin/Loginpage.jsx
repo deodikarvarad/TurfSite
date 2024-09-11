@@ -1,5 +1,5 @@
 import React from "react";
-import grass from "../../assets/img.png"
+import Grass from "../../assets/grass.png"
 import Google from "../../assets/Google.png"
 import Facebook from "../../assets/Facebook.png"
 import Twitter from "../../assets/Twitter.png"
@@ -7,11 +7,12 @@ function Loginpage(){
     return(
         <>
         <div className="w-full h-screen flex items-start">
-          <div className="relative w-1/2 h-full flex flex-col">
-            <img src={grass} className="w-full h-full object-cover" />
-          </div>
+        <div className="relative w-1/2 h-full flex flex-col">
+        <img src={Grass} className="w-full h-full object-cover"/>
+            
+        </div>
 
-          <div className="w-1/2 h-full bg-transparent flex flex-col p-20 items-center justify-center">
+          <div className="w-1/2 h-full bg-white flex flex-col p-20 items-center justify-center">
           <h1 className="text-6xl font-bold font-sans text-transparent pb-14 bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">BookMyTurf</h1>
 
           <div className="w-full flex flex-col">
