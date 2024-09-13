@@ -20,6 +20,10 @@ function Navbar() {
     navigate('/userlogin');
   }
 
+  const redirectprofile=()=>{
+    navigate('/profile')
+  }
+
   const mouseonProfile =()=>{
     setdropdownOpen(true)
   }
@@ -95,7 +99,7 @@ function Navbar() {
                   <ul>
                     <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={redirectlogin}>Log In</li>
                     <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={redirectsignup}>Sign Up</li>
-                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" >My Profile</li>
+                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={redirectprofile}>My Profile</li>
                   </ul>
                 </div>
               )}

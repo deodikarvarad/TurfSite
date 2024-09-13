@@ -3,8 +3,19 @@ import grass from "../../assets/img.png"
 import Google from "../../assets/Google.png"
 import Facebook from "../../assets/Facebook.png"
 import Twitter from "../../assets/Twitter.png"
+import { useNavigate } from "react-router-dom";
+
 function Loginpage(){
-    return(
+
+const navigate =useNavigate();
+ 
+const redirectSignUp =()=>{
+  navigate('/usercreate');
+}
+const redirecthome=()=>{
+  navigate('/Home')
+}
+  return(
         <>
         <div className="w-full h-screen flex items-start">
           <div className="relative w-1/2 h-full flex flex-col">
@@ -45,7 +56,7 @@ function Loginpage(){
                 
 
                 <div className="w-full flex flex-col pt-8">
-                    <button className="bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 text-white hover:bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500 p-4 font-sans font-semibold text-xl">Log In</button>
+                    <button className="bg-gradient-to-r  text-white hover:bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500 p-4 font-sans font-semibold text-xl" onClick={redirecthome}>Log In</button>
                 </div>
 
                 <div className="w-full flex items-center justify-center relative pt-8">
@@ -62,7 +73,8 @@ function Loginpage(){
           </div>
 
           <div className="w-full flex items-center justify-center">
-            <p className="text-sm font-sans text-black">Don't have an account?<span className="font-semibold underline-offset-2 font-sans underline cursor-pointer text-sky-600">Click to Sign Up</span></p>
+            <p className="text-sm font-sans text-black">Don't have an account?
+            <span className="font-semibold underline-offset-2 font-sans underline cursor-pointer text-sky-600" onClick={redirectSignUp}>Click to Sign Up</span></p>
 
           </div>
 
