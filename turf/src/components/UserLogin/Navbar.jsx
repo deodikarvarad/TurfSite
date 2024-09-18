@@ -9,7 +9,7 @@ function Navbar() {
   
 
   const handleBookTurf = () => {
-    navigate('/'); 
+    navigate('/home'); 
   };
 
   const redirectsignup =()=>{
