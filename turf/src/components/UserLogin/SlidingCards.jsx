@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import {useNavigate} from 'react-router-dom'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 
 function SlidingCards() {
@@ -19,6 +19,9 @@ function SlidingCards() {
   const handleShowAll = () =>{
     navigate('/turf');
   } 
+  const redirectbooking=()=>{
+    navigate('/turfbooking')
+  }
 
   const cards = [
     {
@@ -56,7 +59,7 @@ function SlidingCards() {
       description:'Naregoan | Chh. Sambhajinagar',
 
     },
-    // Add more cards as needed
+    
   ];
 
   return (
@@ -81,7 +84,8 @@ function SlidingCards() {
     </button>
     <div
         ref={sliderRef}
-        className="flex overflow-x-auto space-x-4 p-4"
+        className="flex overflow-x-auto space-x-4 p-4 cursor-pointer"
+        onClick={redirectbooking}
     >
         {cards.map((card, index) => (
             <div key={index} className="flex-shrink-0 w-64 overflow-hidden transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 hover:text-grey-600 duration-300 p-3 rounded-xl">
