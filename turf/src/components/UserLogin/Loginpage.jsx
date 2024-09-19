@@ -1,5 +1,5 @@
 import React from "react";
-import Grass from "../../assets/grass.png"
+import Grass from "../../assets/Grass.png"
 import Google from "../../assets/Google.png"
 import Facebook from "../../assets/Facebook.png"
 import Twitter from "../../assets/Twitter.png"
