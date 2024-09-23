@@ -1,89 +1,133 @@
 import React from "react";
-import grass from "../../assets/img.png"
-import Google from "../../assets/Google.png"
-import Facebook from "../../assets/Facebook.png"
-import Twitter from "../../assets/Twitter.png"
+import grass from "../../assets/img.png";
+import Google from "../../assets/Google.png";
+import Facebook from "../../assets/Facebook.png";
+import Twitter from "../../assets/Twitter.png";
 import { useNavigate } from "react-router-dom";
+import { auth } from "../firebase.config.js";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
-function Loginpage(){
+function Loginpage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
-const navigate =useNavigate();
- 
-const redirectSignUp =()=>{
-  navigate('/usercreate');
-}
-const redirecthome=()=>{
-  navigate('/Home')
-}
-  return(
-        <>
-        <div className="w-full h-screen flex items-start">
-          <div className="relative w-1/2 h-full flex flex-col">
-            <img src={grass} className="w-full h-full object-cover" />
-          </div>
+  const navigate = useNavigate();
 
-          <div className="w-1/2 h-full bg-transparent flex flex-col p-20 items-center justify-center">
-          <h1 className="text-6xl font-bold font-sans text-transparent pb-14 bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">BookMyTurf</h1>
+  const redirectSignUp = () => {
+    navigate("/usercreate");
+  };
+  const redirecthome = () => {
+    navigate("/Home");
+  };
+
+  const handlelogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("User Logged in:", userCredential.user);
+      redirecthome();
+    } catch (error) {
+      setError(error.message);
+      console.log("Error logging in:", error.message);
+    }
+  };
+  return (
+    <>
+      <div className="w-full h-screen flex items-start">
+        <div className="relative w-1/2 h-full flex flex-col">
+          <img src={grass} className="w-full h-full object-cover" />
+        </div>
+
+        <div className="w-1/2 h-full bg-transparent flex flex-col p-20 items-center justify-center">
+          <h1 className="text-6xl font-bold font-sans text-transparent pb-14 bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+            BookMyTurf
+          </h1>
 
           <div className="w-full flex flex-col">
             <div className="w-full flex flex-col mb-10 items-center justify-center">
-            <h3 className="text-5xl font-sans font-semibold mb-4">Login</h3>
-            <p className="text-lg mb-2 font-sans">Welcome Back! Before logging in, make sure you login correctly.</p>
+              <h3 className="text-5xl font-sans font-semibold mb-4">Login</h3>
+              <p className="text-lg mb-2 font-sans">
+                Welcome Back! Before logging in, make sure you login correctly.
+              </p>
             </div>
 
             <div className="w-full flex flex-col">
-                <input 
-                type="email" 
+              <input
+                type="email"
                 placeholder="Email"
-                className="w-full text-black font-sans py-4 my-2 bg-transparent border-b border-black outline-none focus:outline-none font-semibold"/>
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full text-black font-sans py-4 my-2 bg-transparent border-b border-black outline-none focus:outline-none font-semibold"
+              />
 
-                <input 
-                type="password" 
+              <input
+                type="password"
                 placeholder="Password"
-                className="w-full text-black font-sans py-4 my-2 bg-transparent border-b border-black outline-none focus:outline-none font-semibold"/>
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full text-black font-sans py-4 my-2 bg-transparent border-b border-black outline-none focus:outline-none font-semibold"
+              />
             </div>
 
             <div className="w-full pt-2 items-center">
-                    <div className="w-full flex items-center">
-                    <input type="checkbox" className="w-4 h-4 mr-2" />
-                    <p className="text-sm">Remember Me</p>
-                    </div>
+              <div className="w-full flex items-center">
+                <input type="checkbox" className="w-4 h-4 mr-2" />
+                <p className="text-sm">Remember Me</p>
+              </div>
 
-                    <p className="font-semibold underline-offset-2 font-sans underline cursor-pointer text-sky-600 pt-2">Forgot Password</p> 
-                    
-                </div>
+              <p className="font-semibold underline-offset-2 font-sans underline cursor-pointer text-sky-600 pt-2">
+                Forgot Password
+              </p>
+            </div>
 
-                
+            <div className="w-full flex flex-col pt-8">
+              <button
+                className="bg-gradient-to-r  text-white hover:bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500 p-4 font-sans font-semibold text-xl"
+                onClick={handlelogin}
+              >
+                Log In
+              </button>
+            </div>
 
-                <div className="w-full flex flex-col pt-8">
-                    <button className="bg-gradient-to-r  text-white hover:bg-gradient-to-l from-pink-500 via-red-500 to-yellow-500 p-4 font-sans font-semibold text-xl" onClick={redirecthome}>Log In</button>
-                </div>
+            <div className="w-full flex items-center justify-center relative pt-8">
+              <div className="w-full h-[0.75px] bg-black"></div>
+              <p className="absolute text-black bg-white text-xl">or</p>
+            </div>
 
-                <div className="w-full flex items-center justify-center relative pt-8">
-                    <div className="w-full h-[0.75px] bg-black"></div>
-                    <p className="absolute text-black bg-white text-xl">or</p>
-                </div>
-                
-                <div className="pt-6 items-center justify-center flex flex-row pb-8">
-                <button className="rounded-full hover:bg-white"><img src={Google} className="h-10 " alt="" /></button>
-                <button className="rounded-full hover:bg-sky-600"><img src={Facebook} className="h-10 " alt="" /></button>
-                <button className="rounded-full hover:bg-black"><img src={Twitter} className="h-10 " alt="" /></button>
-                </div>
-                
+            <div className="pt-6 items-center justify-center flex flex-row pb-8">
+              <button className="rounded-full hover:bg-white">
+                <img src={Google} className="h-10 " alt="" />
+              </button>
+              <button className="rounded-full hover:bg-sky-600">
+                <img src={Facebook} className="h-10 " alt="" />
+              </button>
+              <button className="rounded-full hover:bg-black">
+                <img src={Twitter} className="h-10 " alt="" />
+              </button>
+            </div>
           </div>
 
           <div className="w-full flex items-center justify-center">
-            <p className="text-sm font-sans text-black">Don't have an account?
-            <span className="font-semibold underline-offset-2 font-sans underline cursor-pointer text-sky-600" onClick={redirectSignUp}>Click to Sign Up</span></p>
-
-          </div>
-
+            <p className="text-sm font-sans text-black">
+              Don't have an account?
+              <span
+                className="font-semibold underline-offset-2 font-sans underline cursor-pointer text-sky-600"
+                onClick={redirectSignUp}
+              >
+                Click to Sign Up
+              </span>
+            </p>
           </div>
         </div>
-        
-
-        </>
-    )
+      </div>
+    </>
+  );
 }
 
 export default Loginpage;
