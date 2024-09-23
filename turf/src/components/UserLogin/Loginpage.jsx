@@ -6,6 +6,7 @@ import Twitter from "../../assets/Twitter.png";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase.config.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 
 function Loginpage() {
   const [email, setEmail] = useState("");
