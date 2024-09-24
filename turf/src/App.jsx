@@ -16,7 +16,7 @@ function MainLayout() {
         <Route path='/home' element={<Home />} />
         <Route path='/turf' element={<Turf />} />
         <Route path='/profile' element={<ProfilePage/>}/>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<CreateUser/>} />
         <Route path="/turfbooking" element={<Turfbooking />} />
       </Routes>
       <Footer />

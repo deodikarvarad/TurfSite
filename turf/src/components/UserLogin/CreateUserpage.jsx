@@ -36,7 +36,7 @@ function CreateUser() {
       );
       console.log("User registered: ", userCredential.user);
     } catch (error) {
-      setError(error.message);
+      alert(error.message);
       console.error("Error signing up:", error.message);
     }
   };
@@ -45,7 +45,7 @@ function CreateUser() {
     <>
       <div className="w-full h-screen flex items-start">
         <div className="w-full h-full bg-transparent flex flex-col pl-[35%] pr-[35%] items-center justify-center">
-          <h1 className="text-6xl font-bold font-sans text-transparent pb-8 pt-2 bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+          <h1 className="text-6xl font-bold font-sans text-transparent pb-8 pt-6 bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
             BookMyTurf
           </h1>
 
