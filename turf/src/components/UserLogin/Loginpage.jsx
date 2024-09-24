@@ -34,7 +34,7 @@ function Loginpage() {
       console.log("User Logged in:", userCredential.user);
       redirecthome();
     } catch (error) {
-      setError(error.message);
+      alert(error.message);
       console.log("Error logging in:", error.message);
     }
   };

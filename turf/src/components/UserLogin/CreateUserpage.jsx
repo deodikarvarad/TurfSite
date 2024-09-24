@@ -24,7 +24,7 @@ function CreateUser() {
     e.preventDefault();
 
     if (password !== confirmpassword) {
-      setError("Passwords do not match");
+      alert("Passwords do not match");
       return;
     }
 

@@ -14,9 +14,9 @@ function Home(){
             <SlidingCards/>
         </div>
         <div className="About-info">
-            <div className="second-div" id="info">
+            {/* <div className="second-div" id="info">
                 <About/>
-            </div>
+            </div> */}
         </div>
         </>
     )
