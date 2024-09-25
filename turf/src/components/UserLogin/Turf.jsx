@@ -21,25 +21,24 @@ function Turf() {
         <div className="mt-10 mx-4 border-black bg-slate-300  pt-4 rounded-md">
           <h2 className='pb-4 font-sans text-xl pl-8'>Man Utd</h2>
           <div className='bg-white pl-8 pt-2'>
-            <input 
-            className='text-black'
-            type="checkbox" name="bruno" id="21"/> bruno
-            <br />
-            <input 
-            className='text-black'
-            type="checkbox" name="Garnacho" id="21"/> Garnacho
-            <br />
-            <input 
-            className='text-black'
-            type="checkbox" name="Rashy" id="21"/> Rashy
-            <br />
-            <input 
-            className='text-black'
-            type="checkbox" name="Licha" id="21"/> Licha
-            <br />
-            <input 
-            className='text-black'
-            type="checkbox" name="Mount" id="21"/> Mount
+          <input type="checkbox" id="checkbox1" class="form-checkbox h-5 w-5 text-blue-600"/>
+          <label for="checkbox1" class="text-gray-700 text-xl ">Bruno</label>
+          <br />
+          <br />
+          <input type="checkbox" id="checkbox1" class="form-checkbox h-5 w-5 text-blue-600"/>
+          <label for="checkbox1" class="text-gray-700 text-xl">Rashford</label>
+          <br />
+          <br />
+          <input type="checkbox" id="checkbox1" class="form-checkbox h-5 w-5 text-blue-600"/>
+          <label for="checkbox1" class="text-gray-700 text-xl">Antony</label>
+          <br />
+          <br />
+          <input type="checkbox" id="checkbox1" class="form-checkbox h-5 w-5 text-blue-600"/>
+          <label for="checkbox1" class="text-gray-700 text-xl">Mount</label>
+          <br />
+          <br />
+          <input type="checkbox" id="checkbox1" class="form-checkbox h-5 w-5 text-blue-600"/>
+          <label for="checkbox1" class="text-gray-700 text-xl">De Ligt</label>
             
           </div>
 
@@ -48,25 +47,24 @@ function Turf() {
         <div className="mt-10 mx-4 border-black bg-slate-300  pt-4 rounded-md">
           <h2 className='pb-4 font-sans text-xl pl-8'>liVARpool</h2>
           <div className='bg-white pl-8 pt-2'>
-            <input 
-            className='text-black'
-            type="checkbox" name="salah" id="21"/> salah
-            <br />
-            <input 
-            className='text-black'
-            type="checkbox" name="van Djik" id="22"/> van Djik
-            <br />
-            <input 
-            className='text-black'
-            type="checkbox" name="Diaz" id="23"/> Diaz
-            <br />
-            <input 
-            className='text-black'
-            type="checkbox" name="Gakpo" id="24"/> Gakpo
-            <br />
-            <input 
-            className='text-black'
-            type="checkbox" name="Nunez" id="25"/> Nunez
+          <input type="checkbox" id="checkbox1" class="form-checkbox h-5 w-5 text-blue-600"/>
+          <label for="checkbox1" class="text-gray-700 text-xl ">Salah</label>
+          <br />
+          <br />
+          <input type="checkbox" id="checkbox1" class="form-checkbox h-5 w-5 text-blue-600"/>
+          <label for="checkbox1" class="text-gray-700 text-xl">Van Djik</label>
+          <br />
+          <br />
+          <input type="checkbox" id="checkbox1" class="form-checkbox h-5 w-5 text-blue-600"/>
+          <label for="checkbox1" class="text-gray-700 text-xl">Gakpo</label>
+          <br />
+          <br />
+          <input type="checkbox" id="checkbox1" class="form-checkbox h-5 w-5 text-blue-600"/>
+          <label for="checkbox1" class="text-gray-700 text-xl">Jota</label>
+          <br />
+          <br />
+          <input type="checkbox" id="checkbox1" class="form-checkbox h-5 w-5 text-blue-600"/>
+          <label for="checkbox1" class="text-gray-700 text-xl">CASEMIRO</label>
             
           </div>
 
