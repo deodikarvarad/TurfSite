@@ -1,8 +1,8 @@
 import React from "react";
-import Grass from "../../assets/Grass.png"
-import Google from "../../assets/Google.png"
-import Facebook from "../../assets/Facebook.png"
-import Twitter from "../../assets/Twitter.png"
+import grass from "../../assets/grass.png";
+import Google from "../../assets/Google.png";
+import Facebook from "../../assets/Facebook.png";
+import Twitter from "../../assets/Twitter.png";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase.config.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -34,7 +34,7 @@ function Loginpage() {
       console.log("User Logged in:", userCredential.user);
       redirecthome();
     } catch (error) {
-      setError(error.message);
+      alert(error.message);
       console.log("Error logging in:", error.message);
     }
   };
@@ -45,27 +45,10 @@ function Loginpage() {
           <img src={grass} className="w-full h-full object-cover" />
         </div>
 
-
-function Loginpage(){
-
-const navigate =useNavigate();
- 
-const redirectSignUp =()=>{
-  navigate('/usercreate');
-}
-const redirecthome=()=>{
-  navigate('/Home')
-}
-  return(
-        <>
-        <div className="w-full h-screen flex items-start">
-        <div className="relative w-1/2 h-full flex flex-col">
-        <img src={Grass} className="w-full h-full object-cover"/>
-            
-        </div>
-
-          <div className="w-1/2 h-full bg-white flex flex-col p-20 items-center justify-center">
-          <h1 className="text-6xl font-bold font-sans text-transparent pb-14 bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">BookMyTurf</h1>
+        <div className="w-1/2 h-full bg-transparent flex flex-col p-20 items-center justify-center">
+          <h1 className="text-6xl font-bold font-sans text-transparent pb-14 bg-clip-text bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
+            BookMyTurf
+          </h1>
 
           <div className="w-full flex flex-col">
             <div className="w-full flex flex-col mb-10 items-center justify-center">
