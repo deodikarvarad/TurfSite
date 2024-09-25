@@ -1,11 +1,16 @@
-
 import React from "react";
 import PlaceIcon from '@mui/icons-material/Place';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import PaymentsIcon from '@mui/icons-material/Payments';
+import { useLocation } from "react-router-dom";
 
 
 function Turfbooking(){
+    const location =useLocation();
+    const {title} = location.state || {title : 'Default Title'};
+    const {description} =location.state || {description: 'Default Place'};
+    const {address} =location.state || {description : 'Default Address'}
+
     return(
         <>
         <div className="mt-16  relative flex flex-col h-screen justify-center items-center  ">
@@ -33,7 +38,7 @@ function Turfbooking(){
             <div className="relative flex flex-col  mt-8  w-[1071px] h-[238px] bg-[#9ad5d3]  ">
                 <div className="flex justify-between w-full  ">
                 <div className="flex justify-start  mt-5 ml-7 ">
-                <h2 className="text-black font-serif non-italic text-3xl font-bold ">Penalty Box</h2>
+                <h2 className="text-black font-serif non-italic text-3xl font-bold ">{title}</h2>
                 </div>
                 <div className=" flex  space-x-4 mr-7 mt-5">
                 <button className="flex justify-end h-12 bg-slate-400  ">
@@ -53,7 +58,7 @@ function Turfbooking(){
                     <h1 className=" text-black font-serif text-xs font-bold">🔒 <span className=" text-yellow-600 ">Closed </span>Opens soon at 9:00am</h1>
                 </div>
                 <div className="flex ml-8">
-                    <h1 className="text-black font-serif text-xs font-bold"> Garkheda,Sambhajinagar.</h1>
+                    <h1 className="text-black font-serif text-xs font-bold"> {description}</h1>
                 </div>
                 <div className="flex ml-56">
                     <h1 className="text-black font-serif text-xs font-bold">📈 15 people booked recently</h1>
@@ -64,7 +69,7 @@ function Turfbooking(){
                     <PlaceIcon className="w-[15px] h-[19.5px] mt-2 mr-2" />
                     <div>
                         <h2 className="text-black font-serif non-italic text-[16px] font-light ">
-                        Shivaji Nagar Sutgirni Road, Aurangabad 431001 India
+                        {address}
 
                         </h2>
                     </div>
