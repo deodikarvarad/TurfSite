@@ -3,12 +3,14 @@ function About() {
 
     return ( 
         <>
+
         <div className="bg-transparent">
             <h1 className="font-bold pt-20 pb-20 flex justify-center text-orange-700 ">About Us</h1>
             <div className="pt-5">
                 <h3 className="font-bold">Our Mission</h3>
                 <p>
                 At <span className="text-transparent text-black bg-clip-text bg-gradient-to-r from-green-500 via-red-500 to-yellow-500 font-bold">BookMyTurf</span>, our mission is to revolutionize the way people book turfs in Chh.Sambhajinagar We aim to simplify the process of finding, comparing, and booking turfs, making it easier for sports enthusiasts to focus on what they love—playing the game. Whether you’re planning a friendly match, a tournament, or just a casual kick-around, we’re here to help you find the perfect spot.
+
                 </p>
             </div>
             <div className="pt-5">

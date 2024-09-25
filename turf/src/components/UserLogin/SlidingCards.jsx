@@ -74,13 +74,13 @@ function SlidingCards() {
   ];
 
   return (
-    <div className="pt-0 relative flex-row overflow-x-auto w-max ">
+    <div className="pt-6 relative flex-row overflow-x-auto w-max">
     <div className="mt-4 flex flex-row h-60 items-center justify-between px-5">
-        <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">
+        <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">
             Recommended For You
         </h1>
         <button
-            className="h-11 px-6 mr-8 bg-blue-300 text-blue-950 rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+            className="h-11 px-6 mr-8 bg-gradient-to-r from-blue-300 via via-blue-200 to-blue-100 text-black rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
             onClick={handleShowAll}
         >
             Show All
