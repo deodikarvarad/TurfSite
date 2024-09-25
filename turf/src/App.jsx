@@ -19,7 +19,7 @@ function MainLayout() {
         <Route path="/" element={<Home />} />
         <Route path="/turfbooking" element={<Turfbooking />} />
       </Routes>
-      <Footer />
+      <Footer/>
     </div>
   );
 }
