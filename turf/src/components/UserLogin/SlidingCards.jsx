@@ -19,8 +19,14 @@ function SlidingCards() {
   const handleShowAll = () =>{
     navigate('/turf');
   } 
-  const redirectbooking=()=>{
-    navigate('/turfbooking')
+  const redirectbooking=(cardTitle,cardDescription,cardAddress)=>{
+    navigate('/turfbooking',
+      {state :
+      {
+        title:cardTitle,
+        description:cardDescription,
+        address:cardAddress
+    }})
   }
 
   const cards = [
@@ -28,28 +34,32 @@ function SlidingCards() {
       image: 'https://content3.jdmagicbox.com/comp/aurangabad-maharashtra/j9/9999px240.x240.190511174508.a7j9/catalogue/the-penalty-box-turf-and-cafe-shivaji-nagar-aurangabad-maharashtra-coffee-shops-6pi1k79tyz.jpg',
       title: 'The Penalty Box Turf and Cafe',
       description: 'Sutgirni Chowk | Chh. Sambhajinagar',
+      address :'Shivaji Nagar Sutgirni Road, Chh. Sambhajinagar 431001 India'
     },
     {
       image: 'https://pr5.nicelocal.in/B6-futsfQS1Rh4RdNXy1gA/1120x700,q85/aUNift_YHO8vu0otYLoBwK7M16SwrFEIGm6VNDmxRTDfTfctryZoJYmeqWVRq_V2DCoZ1MwhAF1Zj8ZV4BxrMj37cFAIKgH1zv6Xc3xe6SC7EQh8iPMHD8T9cXbrKGJw',
       title: 'Backwoods Arena',
       description: 'Opposite Kalagram | Chh. Sambhajinagar',
+      address:'Plot No. E-47, Opposite Kalagram, Midc-Chikalthana, Chh. Sambhajinagar, Maharashtra, Maharashtra 431007'
     },
     {
       
       image: 'https://lh3.googleusercontent.com/p/AF1QipNXT-YHPJXbiPxe6gG8UvXsW9OOfyq9RTY6mdqG=s1360-w1360-h1020',
       title: 'Yash Sports Turf',
       description: 'Prozone | Chh. Sambhajinagar',
-
+      address:'Plot No. 1a, Behind Mc Donalds, Midc, Chikalthana, Chh. Sambhajinagar, Maharashtra, Maharashtra 431005'
     },
     {
       title: 'Battlefield Turf',
       description: 'Opposite MGM | Chh. Sambhajinagar',
+      address:'Plot no. 185 opposite MGM Stadium, amaanullah masjid, road, Chh. Sambhajinagar, Maharashtra 431001, India'
     },
     {
       
       image: 'https://content3.jdmagicbox.com/comp/aurangabad-maharashtra/y7/9999px240.x240.221103084506.z7y7/catalogue/amf-turf-devanagari-aurangabad-maharashtra-kabaddi-turf-grounds-dsu9u7059x.jpg',
       title: 'AMF Turf',
       description: 'Pratap Nagar | Chh. Sambhajinagar',
+      address:'AMF Gym, Devanagari Rd, behind Peace Point, Shahnoorwadi, Chh. Sambhajinagar, Maharashtra 431005'
 
     },
     {
@@ -57,6 +67,7 @@ function SlidingCards() {
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvoa_FN3_dXD64rOtjTDJPN4x5zUfTHqEX7A&s',
       title: 'Saani Turf',
       description:'Naregoan | Chh. Sambhajinagar',
+      address:'Naregaon - Malharpur - Warud Rd, Naregaon, Chilkalthana, Chh. Sambhajinagar , Maharashtra 431006'
 
     },
     
@@ -85,13 +96,19 @@ function SlidingCards() {
     <div
         ref={sliderRef}
         className="flex overflow-x-auto space-x-4 p-4 cursor-pointer"
-        onClick={redirectbooking}
+        
     >
         {cards.map((card, index) => (
-            <div key={index} className="flex-shrink-0 w-64 overflow-hidden transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 hover:text-grey-600 duration-300 p-3 rounded-xl">
-                <img src={card.image} alt={card.title} className="w-full h-40 object-cover rounded-md hover:transform transition-transform duration-300 hover:scale-110" />
+            <div
+             key={index} 
+             className="flex-shrink-0 w-64 overflow-hidden transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 hover:text-grey-600 duration-300 p-3 rounded-xl"
+              onClick={()=> redirectbooking(card.title,card.description,card.address)}>
+                <img 
+                src={card.image} 
+                alt={card.title} 
+                className="w-full h-40 object-cover rounded-md hover:transform transition-transform duration-300 hover:scale-110" />
                 <div className="p-4">
-                    <h3 className="text-lg font-semibold">{card.title}</h3>
+                    <h3 className="text-lg font-semibold  text-black">{card.title}</h3>
                     <p className="mt-1 text-sm text-black hover:text-gray-600">{card.description}</p>
                 </div>
             </div>

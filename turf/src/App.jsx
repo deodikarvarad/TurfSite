@@ -7,6 +7,7 @@ import Turf from './components/UserLogin/Turf';
 import CreateUser from './components/UserLogin/CreateUserpage';
 import ProfilePage from './components/UserLogin/Profile';
 import Turfbooking from './components/UserLogin/booking';
+import About from './components/UserLogin/About';
 
 function MainLayout() {
   return (
@@ -18,6 +19,7 @@ function MainLayout() {
         <Route path='/profile' element={<ProfilePage/>}/>
         <Route path="/" element={<CreateUser/>} />
         <Route path="/turfbooking" element={<Turfbooking />} />
+        <Route path ="Aboutus" element={<About/>}/>
       </Routes>
       <Footer/>
     </div>
