@@ -7,17 +7,72 @@ function Turf() {
 <div className="w-full h-screen flex items-start">
         <div className="relative w-1/4 h-full flex flex-col">  
         
-        <div className="mt-32 mx-4 border-black ">
-              <input
-                className="w-full p-2 rounded-md text-black bg-red-300"
-                type="text"
-                placeholder="Search for Turfs near you..."
-              />
-            </div>
-            <div className='ml-4'>
-            
-            </div>
+        <div className="mt-32 mx-4 border-black bg-slate-300 pb-6 pt-6 rounded-md">
+        <h2 className="pb-8 font-sans text-xl pl-9">Search for Name</h2>
+        <div className="flex justify-center">
+        <input
+        className="w-80 p-2 rounded-md text-black bg-white"
+        type="text"
+        placeholder="Search for Turfs near you..."
+        />
         </div>
+        </div>
+
+        <div className="mt-10 mx-4 border-black bg-slate-300  pt-4 rounded-md">
+          <h2 className='pb-4 font-sans text-xl pl-8'>Man Utd</h2>
+          <div className='bg-white pl-8 pt-2'>
+            <input 
+            className='text-black'
+            type="checkbox" name="bruno" id="21"/> bruno
+            <br />
+            <input 
+            className='text-black'
+            type="checkbox" name="Garnacho" id="21"/> Garnacho
+            <br />
+            <input 
+            className='text-black'
+            type="checkbox" name="Rashy" id="21"/> Rashy
+            <br />
+            <input 
+            className='text-black'
+            type="checkbox" name="Licha" id="21"/> Licha
+            <br />
+            <input 
+            className='text-black'
+            type="checkbox" name="Mount" id="21"/> Mount
+            
+          </div>
+
+        </div>
+
+        <div className="mt-10 mx-4 border-black bg-slate-300  pt-4 rounded-md">
+          <h2 className='pb-4 font-sans text-xl pl-8'>liVARpool</h2>
+          <div className='bg-white pl-8 pt-2'>
+            <input 
+            className='text-black'
+            type="checkbox" name="salah" id="21"/> salah
+            <br />
+            <input 
+            className='text-black'
+            type="checkbox" name="van Djik" id="22"/> van Djik
+            <br />
+            <input 
+            className='text-black'
+            type="checkbox" name="Diaz" id="23"/> Diaz
+            <br />
+            <input 
+            className='text-black'
+            type="checkbox" name="Gakpo" id="24"/> Gakpo
+            <br />
+            <input 
+            className='text-black'
+            type="checkbox" name="Nunez" id="25"/> Nunez
+            
+          </div>
+
+        </div>
+        </div>
+        
   <div className='flex flex-col justify-center items-center'>
       <div class="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-32">
     <div class="w-96 h-48 bg-black rounded-lg">
