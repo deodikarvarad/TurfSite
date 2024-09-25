@@ -74,7 +74,7 @@ function Turf() {
   <div className='flex flex-col justify-center items-center'>
       <div class="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-32">
     <div class="w-96 h-48 bg-black rounded-lg">
-    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.telegraphindia.com%2Fsports%2Fcricket%2Fin-challenges-virat-kohli-discovers-crickets-beauty%2Fcid%2F1922557&psig=AOvVaw0z0P_1O7jNkTBTWvazpwQJ&ust=1726811199976000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCMC48pKnzogDFQAAAAAdAAAAABAE" alt="Image" class="object-cover w-full h-full"/>
+    <img src="https://i.ytimg.com/vi/s0kARTWwnaM/maxresdefault.jpg" alt="Image" class="object-cover w-full h-full"/>
     </div>
     <div className='pl-20' >
     <h2 class="text-xl font-semibold text-black pb-8">Penalty Box</h2>
@@ -90,7 +90,7 @@ function Turf() {
 
     <div class="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-10">
     <div class="w-96 h-48 bg-black rounded-lg">
-    <img src="https://via.placeholder.com/400" alt="Image" class="object-cover w-full h-full"/>
+    <img src="" alt="Image" class="object-cover w-full h-full"/>
     </div>
     <div className='pl-20' >
     <h2 class="text-xl font-semibold text-black pb-8">Penalty Box</h2>
