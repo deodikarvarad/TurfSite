@@ -37,7 +37,7 @@ function SlidingCards() {
       address :'Shivaji Nagar Sutgirni Road, Chh. Sambhajinagar 431001 India'
     },
     {
-      image: 'https://pr5.nicelocal.in/B6-futsfQS1Rh4RdNXy1gA/1120x700,q85/aUNift_YHO8vu0otYLoBwK7M16SwrFEIGm6VNDmxRTDfTfctryZoJYmeqWVRq_V2DCoZ1MwhAF1Zj8ZV4BxrMj37cFAIKgH1zv6Xc3xe6SC7EQh8iPMHD8T9cXbrKGJw',
+      image: 'https://th.bing.com/th/id/OIP.CTJFjcGTky-Cup8KCBIvfgHaE8?w=900&h=600&rs=1&pid=ImgDetMain',
       title: 'Backwoods Arena',
       description: 'Opposite Kalagram | Chh. Sambhajinagar',
       address:'Plot No. E-47, Opposite Kalagram, Midc-Chikalthana, Chh. Sambhajinagar, Maharashtra, Maharashtra 431007'
@@ -50,6 +50,7 @@ function SlidingCards() {
       address:'Plot No. 1a, Behind Mc Donalds, Midc, Chikalthana, Chh. Sambhajinagar, Maharashtra, Maharashtra 431005'
     },
     {
+      image :'https://th.bing.com/th/id/OIP.jQnaOWHh3pcpFf6kXPieHgHaEv?w=854&h=546&rs=1&pid=ImgDetMain',
       title: 'Battlefield Turf',
       description: 'Opposite MGM | Chh. Sambhajinagar',
       address:'Plot no. 185 opposite MGM Stadium, amaanullah masjid, road, Chh. Sambhajinagar, Maharashtra 431001, India'

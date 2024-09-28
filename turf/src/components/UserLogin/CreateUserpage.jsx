@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import grass from "../../assets/img.png";
+import grass from "../../assets/grass.png";
 import Google from "../../assets/Google.png";
 import Facebook from "../../assets/Facebook.png";
 import Twitter from "../../assets/Twitter.png";
