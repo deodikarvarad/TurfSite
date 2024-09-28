@@ -2,9 +2,16 @@ import React from 'react';
 import StarIcon from '@mui/icons-material/Star';
 
 function Turf() {
+
+const turfdata = [
+  {
+    
+  }
+]
+
   return ( 
 
-<div className="w-full h-screen flex items-start">
+<div className="w-full h-full flex items-start">
         <div className="relative w-1/4 h-full flex flex-col">  
         
         <div className="mt-32 mx-4 border-black ">
@@ -18,8 +25,8 @@ function Turf() {
             
             </div>
         </div>
-  <div className='flex flex-col justify-center items-center'>
-      <div class="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-32">
+  <div className='flex flex-col justify-center items-center mt-32'>
+      <div class="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full  ">
     <div class="w-96 h-48 bg-black rounded-lg">
     <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.telegraphindia.com%2Fsports%2Fcricket%2Fin-challenges-virat-kohli-discovers-crickets-beauty%2Fcid%2F1922557&psig=AOvVaw0z0P_1O7jNkTBTWvazpwQJ&ust=1726811199976000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCMC48pKnzogDFQAAAAAdAAAAABAE" alt="Image" class="object-cover w-full h-full"/>
     </div>
