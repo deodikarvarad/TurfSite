@@ -21,7 +21,7 @@ function MainLayout() {
         <Route path="/turfbooking" element={<Turfbooking />} />
         <Route path ="Aboutus" element={<About/>}/>
       </Routes>
-      <Footer />
+      <Footer/>
     </div>
   );
 }
