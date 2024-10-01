@@ -1,27 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import StarIcon from '@mui/icons-material/Star';
+// import {CardsContext} from './Context/CardsContext'
 import { useLocation } from 'react-router-dom';
+import { CardsContext } from './Context/CardsContext';
 
 function Turf() {
   
-  const location =useLocation();
-  const { title, description, address } = location.state || {
-    title: 'Default Title',
-    description: 'Default Place',
-    address: 'Default Address',
-  };
-  // const { title = 'Default Title',
-  //    description = 'Default Place' } = location.state || {};
-const turfdata = [
-  {
-    
-  }
-]
+  const {cards} = useContext(CardsContext) 
+ 
 
   return ( 
 
 <div className="w-full h-full flex items-start">
-        <div className="relative w-1/4 h-full flex flex-col">  
+        <div className="relative w-1/4 h-full flex flex-col mt-11">  
         
         <div className="mt-32 mx-4 border-black bg-slate-300 pb-6 pt-6 rounded-md">
         <h2 className="pb-8 font-sans text-xl pl-9">Search for Name</h2>
@@ -86,96 +77,24 @@ const turfdata = [
 
         </div>
         </div>
-  <div className='flex flex-col justify-center items-center mt-32'>
-      <div className="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full  ">
-    <div className="w-96 h-48 bg-black rounded-lg">
-    <img src="https://i.ytimg.com/vi/s0kARTWwnaM/maxresdefault.jpg" alt="Image" className="object-cover w-full h-full"/>
-    </div>
-    <div className='pl-20' >
-    <h2 className="text-xl font-semibold text-black pb-8">{title}</h2>
-    <StarIcon/>
-    <StarIcon/>
-    <StarIcon/>
-    <StarIcon/>
-    <StarIcon/>
-    <p className="text-gray-600 pb-4">{description}</p>
-    <button className="bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600">Book Now</button>
-    </div>
-    </div>
-
-    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-10">
-    <div className="w-96 h-48 bg-black rounded-lg">
-    <img src="" alt="Image" className="object-cover w-full h-full"/>
-    </div>
-    <div className='pl-20' >
-    <h2 className="text-xl font-semibold text-black pb-8">Penalty Box</h2>
-    <img src={StarIcon} alt="" />
-    <p className="text-gray-600 pb-4">Sut Girni Shivaji Nagar Road, Shivaji Nagar, Chh.Sambhajinagar-Maharashtra - 431005 (Beside HDFC Bank)</p>
-    <button className="bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600">Book Now</button>
-    </div>
-    </div>
-
-    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-10">
-    <div className="w-96 h-48 bg-black rounded-lg">
-    <img src="https://via.placeholder.com/400" alt="Image" className="object-cover w-full h-full"/>
-    </div>
-    <div className='pl-20' >
-    <h2 className="text-xl font-semibold text-black pb-8">Penalty Box</h2>
-    <img src={StarIcon} alt="" />
-    <p className="text-gray-600 pb-4">Sut Girni Shivaji Nagar Road, Shivaji Nagar, Chh.Sambhajinagar-Maharashtra - 431005 (Beside HDFC Bank)</p>
-    <button className="bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600">Book Now</button>
-    </div>
-    </div>
-
-    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-10">
-    <div className="w-96 h-48 bg-black rounded-lg">
-    <img src="https://via.placeholder.com/400" alt="Image" className="object-cover w-full h-full"/>
-    </div>
-    <div className='pl-20' >
-    <h2 className="text-xl font-semibold text-black pb-8">Penalty Box</h2>
-    <img src={StarIcon} alt="" />
-    <p className="text-gray-600 pb-4">Sut Girni Shivaji Nagar Road, Shivaji Nagar, Chh.Sambhajinagar-Maharashtra - 431005 (Beside HDFC Bank)</p>
-    <button className="bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600">Book Now</button>
-    </div>
-    </div>
-
-    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-10">
-    <div className="w-96 h-48 bg-black rounded-lg">
-    <img src="https://via.placeholder.com/400" alt="Image" className="object-cover w-full h-full"/>
-    </div>
-    <div className='pl-20' >
-    <h2 className="text-xl font-semibold text-black pb-8">Penalty Box</h2>
-    <img src={StarIcon} alt="" />
-    <p className="text-gray-600 pb-4">Sut Girni Shivaji Nagar Road, Shivaji Nagar, Chh.Sambhajinagar-Maharashtra - 431005 (Beside HDFC Bank)</p>
-    <button className="bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600">Book Now</button>
-    </div>
-    </div>
-
-    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-10">
-    <div className="w-96 h-48 bg-black rounded-lg">
-    <img src="https://via.placeholder.com/400" alt="Image" className="object-cover w-full h-full"/>
-    </div>
-    <div className='pl-20' >
-    <h2 className="text-xl font-semibold text-black pb-8">Penalty Box</h2>
-    <img src={StarIcon} alt="" />
-    <p className="text-gray-600 pb-4">Sut Girni Shivaji Nagar Road, Shivaji Nagar, Chh.Sambhajinagar-Maharashtra - 431005 (Beside HDFC Bank)</p>
-    <button className="bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600">Book Now</button>
-    </div>
-    </div>
-
-    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-10">
-    <div className="w-96 h-48 bg-black rounded-lg">
-    <img src="https://via.placeholder.com/400" alt="Image" className="object-cover w-full h-full"/>
-    </div>
-    <div className='pl-20' >
-    <h2 className="text-xl font-semibold text-black pb-8">Penalty Box</h2>
-    <img src={StarIcon} alt="" />
-    <p className="text-gray-600 pb-4">Sut Girni Shivaji Nagar Road, Shivaji Nagar, Chh.Sambhajinagar-Maharashtra - 431005 (Beside HDFC Bank)</p>
-    <button className="bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600">Book Now</button>
-    </div>
-    </div>
-
-  </div>
+        
+        <div className="flex flex-col justify-center items-center mt-32 w-full ">
+        {cards.map((card, index) => (
+          <div key={index} className="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-10">
+            <div className="w-96 h-48 bg-black rounded-lg">
+              <img src={card.image} alt={card.title} className="object-cover w-full h-full" />
+            </div>
+            <div className='pl-20'>
+              <h2 className="text-xl font-semibold text-black pb-8">{card.title}</h2>
+              <div className="flex">
+                <StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon />
+              </div>
+              <p className="text-gray-600 pb-4">{card.description}</p>
+              <button className="bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600">Book Now</button>
+            </div>
+          </div>
+        ))}
+      </div>
 </div>      
     
     

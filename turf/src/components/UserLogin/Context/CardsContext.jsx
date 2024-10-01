@@ -3,9 +3,9 @@ import { createContext } from "react";
 
 export const CardsContext = createContext();
 
-export const CardsProvider = (props) =>{
-    // const [ count , setCount ] = useState(null);
-    const cards = [
+export const CardsProvider = ({children}) =>{
+   
+    const [cards,setCards] = useState([
             {
                 image: 'https://content3.jdmagicbox.com/comp/aurangabad-maharashtra/j9/9999px240.x240.190511174508.a7j9/catalogue/the-penalty-box-turf-and-cafe-shivaji-nagar-aurangabad-maharashtra-coffee-shops-6pi1k79tyz.jpg',
                 title: 'The Penalty Box Turf and Cafe',
@@ -43,9 +43,12 @@ export const CardsProvider = (props) =>{
           
               },
               
-            ];
-}
+            ]);
+
 
 return(
-    <CardsContext.Provider value={{card}}
-)
+    <CardsContext.Provider value={{cards}}>
+    {children}
+    </CardsContext.Provider>
+);
+}

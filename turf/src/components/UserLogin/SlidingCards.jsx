@@ -1,5 +1,7 @@
-import React, { useRef } from "react";
+import React, { useContext,useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
+import {CardsContext} from './Context/CardsContext'
 
 function SlidingCards() {
   const sliderRef = useRef(null);
@@ -15,14 +17,9 @@ function SlidingCards() {
   const navigate = useNavigate();
 
   const handleShowAll = () => {
-    const defaultTitle = "All Recommended Turfs";
-    const defaultDescription = "Explore all the recommended turfs available for you.";
-    navigate("/turf", {
-      state: {
-        title: title,
-        description: description,
-      },
-    });
+    // const defaultTitle = "All Recommended Turfs";
+    // const defaultDescription = "Explore all the recommended turfs available for you.";
+    navigate("/turf");
   };
 
   const redirectbooking = (cardTitle, cardDescription, cardAddress) => {
@@ -34,56 +31,8 @@ function SlidingCards() {
       },
     });
   };
-
-  const cards = [
-    {
-      image:
-        "https://content3.jdmagicbox.com/comp/aurangabad-maharashtra/j9/9999px240.x240.190511174508.a7j9/catalogue/the-penalty-box-turf-and-cafe-shivaji-nagar-aurangabad-maharashtra-coffee-shops-6pi1k79tyz.jpg",
-      title: "The Penalty Box Turf and Cafe",
-      description: "Sutgirni Chowk | Chh. Sambhajinagar",
-      address: "Shivaji Nagar Sutgirni Road, Chh. Sambhajinagar 431001 India",
-    },
-    {
-      image:
-        "https://th.bing.com/th/id/OIP.CTJFjcGTky-Cup8KCBIvfgHaE8?w=900&h=600&rs=1&pid=ImgDetMain",
-      title: "Backwoods Arena",
-      description: "Opposite Kalagram | Chh. Sambhajinagar",
-      address:
-        "Plot No. E-47, Opposite Kalagram, Midc-Chikalthana, Chh. Sambhajinagar, Maharashtra, Maharashtra 431007",
-    },
-    {
-      image:
-        "https://cricketgraph.com/wp-content/gallery/enc-sports-turf/ENC-Sports-Turf-Thane-West-10.jpg",
-      title: "Yash Sports Turf",
-      description: "Prozone | Chh. Sambhajinagar",
-      address:
-        "Plot No. 1a, Behind Mc Donalds, Midc, Chikalthana, Chh. Sambhajinagar, Maharashtra, Maharashtra 431005",
-    },
-    {
-      image:
-        "https://th.bing.com/th/id/OIP.jQnaOWHh3pcpFf6kXPieHgHaEv?w=854&h=546&rs=1&pid=ImgDetMain",
-      title: "Battlefield Turf",
-      description: "Opposite MGM | Chh. Sambhajinagar",
-      address:
-        "Plot no. 185 opposite MGM Stadium, amaanullah masjid, road, Chh. Sambhajinagar, Maharashtra 431001, India",
-    },
-    {
-      image:
-        "https://content3.jdmagicbox.com/comp/aurangabad-maharashtra/y7/9999px240.x240.221103084506.z7y7/catalogue/amf-turf-devanagari-aurangabad-maharashtra-kabaddi-turf-grounds-dsu9u7059x.jpg",
-      title: "AMF Turf",
-      description: "Pratap Nagar | Chh. Sambhajinagar",
-      address:
-        "AMF Gym, Devanagari Rd, behind Peace Point, Shahnoorwadi, Chh. Sambhajinagar, Maharashtra 431005",
-    },
-    {
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvoa_FN3_dXD64rOtjTDJPN4x5zUfTHqEX7A&s",
-      title: "Saani Turf",
-      description: "Naregoan | Chh. Sambhajinagar",
-      address:
-        "Naregaon - Malharpur - Warud Rd, Naregaon, Chilkalthana, Chh. Sambhajinagar , Maharashtra 431006",
-    },
-  ];
+  const { cards } = useContext(CardsContext);
+  
 
   return (
     <div className="pt-6 relative flex-row overflow-x-auto w-max">

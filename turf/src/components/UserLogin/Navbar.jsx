@@ -55,7 +55,7 @@ function Navbar() {
 
             <div className="flex-grow mx-4 border-black">
               <input
-                className="w-full p-2 rounded-md text-black "
+                className="w-full p-2 rounded-md text-indigo "
                 type="text"
                 placeholder="Search for Turfs near you..."
               />
