@@ -35,20 +35,20 @@ function ProfilePage(){
         <div className=" ml-40 mr-40 flex flex-row pt-10 pb-2 ">
             <div>
                 <h2 className="ml-40 text-xl">First Name</h2>
-                <input type="First Name" 
+                <input type="First Name" placeholder="First Name"
                 className="ml-40 p-2 pr-56 rounded-lg bg-white"/>
             </div>
 
             <div>
                 <h2 className="ml-40 text-xl">Last Name</h2>
-                <input type="Last Name"
+                <input type="Last Name" placeholder="Last Name"
                 className="ml-40 p-2 pr-56 rounded-lg  bg-white" />
             </div>     
             </div>
 
             <div className="ml-40 mr-40 pt-10">
             <h2 className="ml-40 text-xl">User Name</h2>
-                <input type="User Name" 
+                <input type="User Name" placeholder="User Name"
                 className="ml-40 p-2 pr-56 rounded-lg  bg-white"/>
             </div>  
 
@@ -59,13 +59,13 @@ function ProfilePage(){
             <div className=" ml-40 mr-40 flex flex-row pt-10 pb-2 ">
             <div>
                 <h2 className="ml-40 text-xl">Email</h2>
-                <input type="email" name="Email" id="" 
+                <input type="email" name="Email" id="" placeholder="Email"
                 className="ml-40 p-2 pr-56 rounded-lg  bg-white"/>
             </div>
 
             <div>
                 <h2 className="ml-40 text-xl">Phone No.</h2>
-                <input type="Phone No."
+                <input type="Phone No." placeholder="Phone No.(10 Digit)"
                 className="ml-40 p-2 pr-56 rounded-lg  bg-white" />
             </div>     
             </div>
@@ -76,7 +76,7 @@ function ProfilePage(){
 
             <div className="ml-40 mr-40 pt-10 pb-2 ">
                 <h2 className="ml-40 text-xl">Loaction</h2>
-                <input type="Location"
+                <input type="Location" placeholder="Location"
                 className="ml-40 p-2 pr-96 rounded-lg  bg-white" />
             </div>  
 
@@ -88,20 +88,20 @@ function ProfilePage(){
         <div className=" ml-40 mr-40 flex flex-row pt-10 pb-2 ">
             <div>
                 <h2 className="ml-40 text-xl">Current Password</h2>
-                <input type="password" name="Current Password" id=""
+                <input type="password" name="Current Password" id="" placeholder="Current Password"
                 className="ml-40 p-2 pr-56 rounded-lg  bg-white" />
             </div>
 
             <div>
                 <h2 className="ml-40 text-xl">New Password</h2>
-                <input type="password" name="New Password" id=""
+                <input type="password" name="New Password" id="" placeholder="New Password"
                 className="ml-40 p-2 pr-56 rounded-lg  bg-white" />
             </div>     
             </div>
 
             <div className="ml-40 mr-40 pt-10 pb-10">
             <h2 className="ml-40 text-xl">Confirm New Password</h2>
-            <input type="password" name="Confirm New Password" id=""
+            <input type="password" name="Confirm New Password" id="" placeholder="Confirm New Password"
                 className="ml-40 p-2 pr-56 rounded-lg  bg-white" />
             </div>  
 
