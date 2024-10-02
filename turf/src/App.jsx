@@ -9,6 +9,7 @@ import ProfilePage from './components/UserLogin/Profile';
 import Turfbooking from './components/UserLogin/booking';
 import About from './components/UserLogin/About';
 import { CardsProvider } from './components/UserLogin/Context/CardsContext';
+import TimeSelection from './components/UserLogin/timeselection';
 
 function MainLayout() {
   return (
@@ -21,6 +22,7 @@ function MainLayout() {
         <Route path='/profile' element={<ProfilePage/>}/>
         <Route path="/" element={<Home/>} />
         <Route path="/turfbooking" element={<Turfbooking />} />
+        <Route path ="/time" element={<TimeSelection/>}/>
         <Route path ="Aboutus" element={<About/>}/>
       </Routes>
       <Footer/>

@@ -60,7 +60,7 @@ function Navbar() {
   return (
     <>
       <div className="w-full overflow-x-hidden">
-        <nav className="w-full bg-transparent p-4 fixed top-0 left-0 z-10">
+        <nav className="w-full bg-transparent p-4 top-0 left-0 z-10">
           <div className="container mx-auto flex items-center justify-between px-4">
             <button
               onClick={handleBookTurf}

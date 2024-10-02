@@ -2,14 +2,19 @@ import React from "react";
 import PlaceIcon from '@mui/icons-material/Place';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import PaymentsIcon from '@mui/icons-material/Payments';
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 
 function Turfbooking(){
+    
+    const navigate = useNavigate();
     const location =useLocation();
     const {title} = location.state || {title : 'Default Title'};
     const {description} =location.state || {description: 'Default Place'};
     const {address} =location.state || {description : 'Default Address'}
+    const handleBookNow = () => {
+        navigate("/time");
+    };
 
     return(
         <>
@@ -45,7 +50,10 @@ function Turfbooking(){
                     <h2 className=" text-blue-50 font-serif non-italic text-sm ">Enquire</h2>
                 </button>
                 <button className="flex justify-end h-12 bg-blue-500">
-                    <h2 className=" text-blue-50 font-serif non-italic text-sm">Book Now</h2>
+                    <h2 className=" text-blue-50 font-serif non-italic text-sm"
+                    onClick={handleBookNow}
+                    >
+                    Book Now</h2>
                 </button>
 
                 </div>
@@ -94,7 +102,7 @@ function Turfbooking(){
                     </div>
                     <div className="ml-4">
                         <h2 className="text-black font-serif non-italic text-[16px] font-light">Mode of Payment</h2>
-                        <h2 className="text-black font-serif non-italic text-[16px] font-light">Cash, Debit card, Credit card, UPI, Crypto</h2>
+                        <h2 className="text-black font-serif non-italic text-[16px] font-light">Cash, Online, Crypto</h2>
                         
                     </div>
                     </div>
