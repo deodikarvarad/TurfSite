@@ -8,20 +8,25 @@ import CreateUser from './components/UserLogin/CreateUserpage';
 import ProfilePage from './components/UserLogin/Profile';
 import Turfbooking from './components/UserLogin/booking';
 import About from './components/UserLogin/About';
+import { CardsProvider } from './components/UserLogin/Context/CardsContext';
+import TimeSelection from './components/UserLogin/timeselection';
 
 function MainLayout() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gray-100">
+    <CardsProvider>
       <Navbar />
       <Routes>
         <Route path='/home' element={<Home />} />
         <Route path='/turf' element={<Turf />} />
         <Route path='/profile' element={<ProfilePage/>}/>
-        <Route path="/" element={<CreateUser/>} />
+        <Route path="/" element={<Home/>} />
         <Route path="/turfbooking" element={<Turfbooking />} />
+        <Route path ="/time" element={<TimeSelection/>}/>
         <Route path ="Aboutus" element={<About/>}/>
       </Routes>
       <Footer/>
+      </CardsProvider>
     </div>
   );
 }
