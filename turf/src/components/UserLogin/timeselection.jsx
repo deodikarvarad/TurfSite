@@ -61,7 +61,7 @@ function TimeSelection() {
             {/* Main Flex Row with Date and Time */}
             <div className="flex flex-row">
                 {/* Date Section */}
-                <div className="ml-[180px] mt-[12px] mb-[20px] border-2 border-black w-[751px] h-auto bg-white">
+                <div className="ml-[180px] mt-[12px]  border-2 border-black w-[751px] h-auto bg-white mb-40">
                     {/* Month and Dates */}
                     <div className="mt-4 w-[750px] h-[102px] border-2 border-black flex flex-row">
                         <div className="ml-[28px] min-w-min h-6 border-2 border-black">
@@ -85,7 +85,7 @@ function TimeSelection() {
 
                     {/* Time Slots Section */}
                     {selectedDate && availableTimes.length > 0 && (
-                        <div className="mt-4 flex flex-col"> {/* Changed to flex-col */}
+                        <div className="mt-4 flex flex-col max-h-[30rem] overflow-y-scroll  "> {/* Changed to flex-col */}
                             {availableTimes.map((time) => (
                                 <div
                                     key={time}
