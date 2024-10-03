@@ -9,8 +9,8 @@ function TimeSelection() {
     const [selectedTimes, setSelectedTimes] = useState([]); // State for selected times
     const [currentHour, setCurrentHour] = useState(new Date().getHours());
 
-    // Time slots for a day (e.g., from 14:00 to 23:00)
-    const timeSlots = Array.from({ length: 24 }, (_, index) => `${index + 0}:00`); // 14:00 to 23:00
+    // Time slots for a day (e.g., from 00:00 to 23:00)
+    const timeSlots = Array.from({ length: 24 }, (_, index) => `${index}:00`);
 
     useEffect(() => {
         // Generate available dates for today and the next 6 days
@@ -27,7 +27,7 @@ function TimeSelection() {
             // If the selected date is today, filter time slots after the current hour
             const availableTodayTimes = timeSlots.filter((time) => {
                 const [hours] = time.split(':').map(Number);
-                return hours >= hour; // Include current hour
+                return hours > hour; // Include times after current hour
             });
             setAvailableTimes(availableTodayTimes);
         } else {
@@ -51,49 +51,62 @@ function TimeSelection() {
 
     return (
         <div>
+            {/* Heading Section */}
             <div className="mt-[124.68px] ml-[185px]">
                 <div className="w-[158px] h-[35px] text-black">
                     <h2 className="font-serif text-xl">Select Time</h2>
                 </div>
             </div>
+
+            {/* Main Flex Row with Date and Time */}
             <div className="flex flex-row">
-                <div className="ml-[180px] mt-[12px] mb-[20px] border-2 border-black border-separate w-[751px] h-[690px] bg-white">
-                    <div className="mt-4 w-[750px] h-[102px] border-2 border-black flex flex-col">
-                        <div className="ml-[28px] w-10 h-6 border-2 border-black">
+                {/* Date Section */}
+                <div className="ml-[180px] mt-[12px] mb-[20px] border-2 border-black w-[751px] h-auto bg-white">
+                    {/* Month and Dates */}
+                    <div className="mt-4 w-[750px] h-[102px] border-2 border-black flex flex-row">
+                        <div className="ml-[28px] min-w-min h-6 border-2 border-black">
                             <h2>{currentMonth}</h2>
                         </div>
-                        <div className="ml-[28px] mt-2 w-16 h-16 border-2 border-black flex flex-row">
-                            {availableDates.map((date, index) => (
+                        {/* Mapping Available Dates */}
+                        {availableDates.map((date, index) => (
+                            <div
+                                key={index}
+                                className="mt-6 w-16 gap-8 ml-7 h-16 border-2 border-black flex flex-row cursor-pointer"
+                                onClick={() => handleDateChange(date)}
+                            >
                                 <div
-                                    key={index}
-                                    className={`ml-[16px] mt-2 w-5 h-6 border-2 border-black ${isSameDay(date, selectedDate) ? 'bg-blue-500' : ''}`}
-                                    onClick={() => handleDateChange(date)}
+                                    className={`ml-[16px] mt-2 w-5 h-6 border-2 border-black  ${isSameDay(date, selectedDate) ? 'bg-blue-500' : ''}`}
                                 >
                                     <p className="font-normal text-[15px]">{format(date, 'd')}</p>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
                     </div>
-                    <div className="w-[751px] h-[71px] border-2 border-black flex flex-row">
-                        <div className="w-[662.5px] h-[24px] border-2 border-black mt-5 ml-8">
-                            {availableTimes.length > 0 ? (
-                                availableTimes.map((time) => (
+
+                    {/* Time Slots Section */}
+                    {selectedDate && availableTimes.length > 0 && (
+                        <div className="mt-4 flex flex-col"> {/* Changed to flex-col */}
+                            {availableTimes.map((time) => (
+                                <div
+                                    key={time}
+                                    className="w-full h-[71px] border-2 border-black flex flex-row"
+                                >
                                     <div
-                                        key={time}
-                                        className="w-[61px] h-[24px] border-2 border-black cursor-pointer hover:bg-gray-200"
+                                        className="w-[61px] h-[24px] border-2 border-black mt-5 ml-8 cursor-pointer hover:bg-gray-200"
                                         onClick={() => handleTimeSelect(time)} // Handle time selection
                                     >
                                         <p className="text-base">{time}</p>
                                     </div>
-                                ))
-                            ) : (
-                                <p className="text-base">No available times</p>
-                            )}
+                                    <img className="w-4 h-4 mt-6 ml-auto mr-5 " src={arrow} alt="arrow" />
+
+                                </div>
+                            ))}
                         </div>
-                        <img className="w-4 h-4 flex flex-row mt-6 ml-4" src={arrow} alt="arrow" />
-                    </div>
+                    )}
                 </div>
-                <div className="ml-[30px] mt-[11.5px] border-2 border-black w-[300px] h-[270px]">
+
+                {/* Selected Times Section */}
+                <div className="ml-[30px] mt-[11.5px] border-2 border-black w-[300px] h-[300px]">
                     <h2 className="font-serif text-xl ml-2">Selected Time</h2>
                     <div className="flex flex-col">
                         {selectedTimes.map((time, index) => (
