@@ -77,12 +77,12 @@ function Navbar() {
               />
             </div>
 
-            <div className="text-blue-500 flex item-center ">
+            <div className="text-blue-500 flex item-center font-sans text-bold pr-2">
               {weather ?(
                 <div className=''>
-                  <p>{defaultCity}:</p>
-                  <p>{weather.main.temp}°C</p>
-                  <p>{weather.weather[0].description}</p>
+                  <p className='text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via bg-red-700 to-orange-500'>{defaultCity}</p>
+                  <p className='text-lg font-bold '>
+                    {weather.main.temp}°C  _______ {weather.weather[0].description}</p>
                 </div>
               ):(
                 <p>Loading Weather...</p>
@@ -95,12 +95,12 @@ function Navbar() {
             className="text-white hover:text-black flex space-x-4">
               
               <button
-               className='transition ease-in-out delay-150 bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-500  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300'>
+               className='transition ease-in-out delay-150 bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-500  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 '>
                 Profile
                 
               </button>
               {dropdownOpen &&(
-                <div className="absolute right-0 mt-12 w-48 bg-white shadow-lg rounded-lg py-2">
+                <div className="absolute right-0 mt-12 w-48 bg-white shadow-lg rounded-lg py-2 duration-1000">
                   <ul>
                     <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={redirectlogin}>Log In</li>
                     <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={redirectsignup}>Sign Up</li>
