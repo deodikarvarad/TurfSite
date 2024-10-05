@@ -3,10 +3,21 @@ import StarIcon from '@mui/icons-material/Star';
 // import {CardsContext} from './Context/CardsContext'
 import { useLocation } from 'react-router-dom';
 import { CardsContext } from './Context/CardsContext';
-
+import { useNavigate } from "react-router-dom";
 function Turf() {
   
   const {cards} = useContext(CardsContext) 
+  const navigate = useNavigate();
+  const redirectbooking = (cardTitle, cardDescription, cardAddress, costTurf) => {
+    navigate("/turfbooking", {
+      state: {
+        title: cardTitle,
+        description: cardDescription,
+        address: cardAddress,
+        cost: costTurf,
+      },
+    });
+  };
  
 
   return ( 
@@ -90,7 +101,9 @@ function Turf() {
                 <StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon />
               </div>
               <p className="text-gray-600 pb-4">{card.description}</p>
-              <button className="bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600">Book Now</button>
+              <button className="bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600" onClick={() =>
+              redirectbooking(card.title, card.description, card.address, card.cost)
+            }>Book Now</button>
             </div>
           </div>
         ))}
