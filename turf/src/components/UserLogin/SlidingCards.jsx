@@ -35,7 +35,7 @@ function SlidingCards() {
   
 
   return (
-    <div className="pt-6 relative flex-row overflow-x-auto w-max">
+    <div className="pt-6 relative flex-row overflow-x-auto w-max mb-40">
       <div className="mt-4 flex flex-row h-60 items-center justify-between px-5">
         <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">
           Recommended For You
