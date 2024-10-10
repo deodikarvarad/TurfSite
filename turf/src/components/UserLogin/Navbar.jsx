@@ -64,7 +64,7 @@ function Navbar() {
           <div className="container mx-auto flex items-center justify-between px-4">
             <button
               onClick={handleBookTurf}
-              className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via bg-red-500 to-yellow-500 ml-0 "
+              className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r  from-orange-600 via bg-red-700 to-orange-500 ml-0 "
             >
               BookMyTurf
             </button>
