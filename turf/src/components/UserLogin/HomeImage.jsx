@@ -28,36 +28,42 @@ function HomeImage() {
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
         setIsTransitioning(false);
-      }, 500); // 
-    }, 5000); // 
+      }, 500); // For text transition
+    }, 5000); // For image transition
 
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
     <>
-      <div className="Homeimage relative">
-        
-        <div className="min-w-[1500px] min-h-[500px] max-w-fit max-h-fit border border-black">
-        <img
-            className="min-w-[100%] min-h-[100%] object-cover"
-            src={images[currentIndex].src}
-            alt={images[currentIndex].text}
-          />
+      <div className="relative w-full h-[950px] overflow-hidden">
+        {/* Image Container */}
+        <div className="relative w-full h-full">
+          {images.map((image, index) => (
+            <img
+              key={image.id}
+              className={`w-full h-full object-cover absolute transition-transform duration-1000 ${
+                index === currentIndex ? "translate-x-0" : "translate-x-full"
+              }`}
+              src={image.src}
+              alt={image.text}
+            />
+          ))}
         </div>
 
-        
-        <div className="absolute inset-0 flex justify-center items-center">
+        {/* Text Overlay */}
+        <div className="absolute inset-0 flex flex-col justify-center items-center">
           <h1
             className={`text-white text-5xl font-bold shadow-lg transform transition-all duration-700 ease-out ${
               isTransitioning
                 ? "translate-y-10 opacity-0"
                 : "translate-y-0 opacity-100"
             }`}
-            key={currentIndex} 
+            key={currentIndex}
           >
-            {images[currentIndex].text}</h1>  <h1 className="text-white text-5xl font-bold ml-4 ">Booking</h1> 
-          
+            {images[currentIndex].text}
+          </h1>
+          <h1 className="text-white text-5xl font-bold ml-4">Booking</h1>
         </div>
       </div>
     </>
