@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {CardsContext} from './Context/CardsContext'
 
 function SlidingCards() {
+  const navigate = useNavigate();
   const sliderRef = useRef(null);
 
   const scrollLeft = () => {
@@ -14,7 +15,6 @@ function SlidingCards() {
     sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
   };
 
-  const navigate = useNavigate();
 
   const handleShowAll = () => {
     // const defaultTitle = "All Recommended Turfs";
@@ -36,7 +36,7 @@ function SlidingCards() {
   
 
   return (
-    <div className="pt-6 relative flex-row overflow-x-auto w-max mb-10">
+    <div className="pt-6 relative flex-row  mb-10">
       <div className="mt-4 flex flex-row h-60 items-center justify-between px-5">
         <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">
           Recommended For You
@@ -57,12 +57,12 @@ function SlidingCards() {
       </button>
       <div
         ref={sliderRef}
-        className="flex overflow-x-auto space-x-4 p-4 cursor-pointer"
+        className="flex w overflow-x-auto space-x-4 p-4 cursor-pointer"
       >
         {cards.map((card, index) => (
           <div
             key={index}
-            className="flex-shrink-0 w-64 overflow-hidden transition ease-in-out delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 hover:text-grey-600 duration-300 p-3 rounded-xl"
+            className="flex-shrink-1 w-30 overflow-hidden transition ease-in delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 hover:text-grey-600 duration-300 p-3 rounded-xl"
             onClick={() =>
               redirectbooking(card.title, card.description, card.address, card.cost)
             }

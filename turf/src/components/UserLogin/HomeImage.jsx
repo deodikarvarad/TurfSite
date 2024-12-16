@@ -28,15 +28,15 @@ function HomeImage() {
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
         setIsTransitioning(false);
-      }, 500); // For text transition
-    }, 5000); // For image transition
+      }, 500); 
+    }, 5000); 
 
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
     <>
-      <div className="relative w-full h-[950px] overflow-hidden">
+      <div className="relative w-full h-[700px] overflow">
         {/* Image Container */}
         <div className="relative w-full h-full">
           {images.map((image, index) => (
@@ -53,6 +53,7 @@ function HomeImage() {
 
         {/* Text Overlay */}
         <div className="absolute inset-0 flex flex-col justify-center items-center">
+        <div className="">
           <h1
             className={`text-white text-5xl font-bold shadow-lg transform transition-all duration-700 ease-out ${
               isTransitioning
@@ -64,6 +65,7 @@ function HomeImage() {
             {images[currentIndex].text}
           </h1>
           <h1 className="text-white text-5xl font-bold ml-4">Booking</h1>
+          </div>
         </div>
       </div>
     </>

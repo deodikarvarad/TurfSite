@@ -24,7 +24,7 @@ function TimeSelection() {
         const hour = new Date().getHours();
 
         if (isSameDay(date, startOfToday())) {
-            // If the selected date is today, filter time slots after the current hour
+            
             const availableTodayTimes = timeSlots.filter((time) => {
                 const [hours] = time.split(':').map(Number);
                 return hours > hour; // Include times after current hour
@@ -73,7 +73,7 @@ function TimeSelection() {
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
-    const currentMonth = monthNames[currentDate.getMonth()]; // Get the current month's name
+    const currentMonth = monthNames[currentDate.getMonth];
 
     return (
         <div className="bg-gray-100 p-6 rounded-lg shadow-md">
@@ -99,7 +99,7 @@ function TimeSelection() {
                                 onClick={() => handleDateChange(date)}
                             >
                                 <div className={`mt-2 flex flex-col gap-4 w-5 h-6 ml-4 content-center ${isSameDay(date, selectedDate) ? 'bg-blue-600 text-white' : 'text-gray-700'}`}>
-                                    <p className="font-normal text-[10px]">{format(date, 'EEE')}</p> {/* Day of the week */}
+                                    <p className="font-normal text-[10px]">{format(date, 'EEEE')}</p> {/* Day of the week */}
                                     <p className="font-normal text-[15px]">{format(date, 'd')}</p>
                                 </div>
                             </div>

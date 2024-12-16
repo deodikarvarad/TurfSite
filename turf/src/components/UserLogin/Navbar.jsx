@@ -36,7 +36,7 @@ function Navbar() {
       );
       setFilteredCards(results);
     } else {
-      setFilteredCards([]); // Clear results if query is empty
+      setFilteredCards([]); 
     }
   };
   

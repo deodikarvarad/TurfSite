@@ -53,7 +53,7 @@ function Turfbooking() {
                     </div>
                 </div>
 
-                {/* Booking details */}
+                
                 <div className="relative flex flex-col mt-8 w-[1071px] h-[238px] bg-[#9ad5d3]">
                     <div className="flex justify-between w-full">
                         <div className="flex justify-start mt-5 ml-7">
