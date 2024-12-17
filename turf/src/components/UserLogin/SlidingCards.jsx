@@ -62,7 +62,8 @@ function SlidingCards() {
         {cards.map((card, index) => (
           <div
             key={index}
-            className="flex-shrink-1 w-30 overflow-hidden transition ease-in delay-150 bg-white hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 hover:text-grey-600 duration-300 p-3 rounded-xl"
+            className="flex-shrink-1 w-30 overflow-hidden transition ease-in delay-150 bg-white hover:-translate-y-1 hover:scale-110
+             hover:bg-blue-500 hover:text-grey-600 duration-300 p-3 rounded-xl"
             onClick={() =>
               redirectbooking(card.title, card.description, card.address, card.cost)
             }
