@@ -1,12 +1,13 @@
 import React, { useContext,useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom"
 
 import {CardsContext} from './Context/CardsContext'
 
 function SlidingCards() {
   const navigate = useNavigate();
   const sliderRef = useRef(null);
-
+  const { cards } = useContext(CardsContext);
+  
   const scrollLeft = () => {
     sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
   };
@@ -32,7 +33,6 @@ function SlidingCards() {
       },
     });
   };
-  const { cards } = useContext(CardsContext);
   
 
   return (

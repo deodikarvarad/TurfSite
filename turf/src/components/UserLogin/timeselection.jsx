@@ -6,14 +6,14 @@ function TimeSelection() {
     const [availableDates, setAvailableDates] = useState([]);
     const [selectedDate, setSelectedDate] = useState(null);
     const [availableTimes, setAvailableTimes] = useState([]);
-    const [selectedTimes, setSelectedTimes] = useState([]); // Store the two selected times across dates
-    const [bookedTimes, setBookedTimes] = useState({}); // Track booked times per date
+    const [selectedTimes, setSelectedTimes] = useState([]); 
+    const [bookedTimes, setBookedTimes] = useState({}); 
 
-    // Time slots for a day (e.g., from 00:00 to 23:00)
+    
     const timeSlots = Array.from({ length: 24 }, (_, index) => `${index}:00`);
 
     useEffect(() => {
-        // Generate available dates for today and the next 6 days
+        
         const today = startOfToday();
         const dates = Array.from({ length: 7 }, (_, index) => addDays(today, index));
         setAvailableDates(dates);
@@ -27,11 +27,11 @@ function TimeSelection() {
             
             const availableTodayTimes = timeSlots.filter((time) => {
                 const [hours] = time.split(':').map(Number);
-                return hours > hour; // Include times after current hour
+                return hours > hour; 
             });
             setAvailableTimes(availableTodayTimes);
         } else {
-            // If the selected date is in the future, show all time slots
+            
             setAvailableTimes(timeSlots);
         }
     };
@@ -44,12 +44,12 @@ function TimeSelection() {
 
         const selectedTimeObject = { date, time };
 
-        // Add the time to the selectedTimes array
+        
         setSelectedTimes((prev) => [...prev, selectedTimeObject]);
     };
 
     const handleBookedTime = (date, time) => {
-        // Mark time as booked for the selected date
+        
         setBookedTimes((prev) => ({
             ...prev,
             [date]: [...(prev[date] || []), time]
@@ -65,7 +65,7 @@ function TimeSelection() {
     };
 
     const handleReset = () => {
-        setSelectedTimes([]); // Clear all selected times
+        setSelectedTimes([]); 
     };
 
     const currentDate = new Date();
@@ -77,16 +77,16 @@ function TimeSelection() {
 
     return (
         <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-            {/* Heading Section */}
+            
             <div className="mt-[124.68px] ml-[185px]">
                 <h2 className="font-serif text-2xl text-gray-800">Select Time</h2>
             </div>
 
-            {/* Main Flex Row with Date and Time */}
+            
             <div className="flex flex-row">
-                {/* Date Section */}
+                
                 <div className="ml-[180px] mt-[12px] border-2 border-gray-300 w-[745px] h-auto bg-white mb-40 rounded-lg shadow-sm">
-                    {/* Month and Dates */}
+                    
                     <div className="mt-4 w-[740px] h-[102px] border-b-2 border-gray-300 flex flex-row bg-yellow-200">
                         <div className="ml-[28px] min-w-min h-6 bg-amber-500 text-white flex items-center justify-center rounded-md shadow-md">
                             <h2 className="font-semibold">{currentMonth}</h2>
@@ -106,7 +106,7 @@ function TimeSelection() {
                         ))}
                     </div>
 
-                    {/* Time Slots Section */}
+                    
                     {selectedDate && availableTimes.length > 0 && (
                         <div className="mt-4 flex flex-col max-h-[30rem] overflow-y-scroll">
                             {availableTimes.map((time) => (
@@ -125,7 +125,7 @@ function TimeSelection() {
                     )}
                 </div>
 
-                {/* Selected Times Section */}
+                
                 <div className="ml-[30px] mt-[11.5px] border-2 border-gray-300 w-[300px] h-[300px] bg-white rounded-lg shadow-md">
                     <h2 className="font-serif text-xl ml-2 text-gray-800">Selected Times</h2>
                     <div className="flex flex-col p-2">
