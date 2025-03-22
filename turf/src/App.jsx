@@ -10,6 +10,7 @@ import Turfbooking from "./components/UserLogin/booking";
 import About from "./components/UserLogin/About";
 import { CardsProvider } from "./components/UserLogin/Context/CardsContext";
 import TimeSelection from "./components/UserLogin/timeselection";
+import Payment from "./components/UserLogin/Payment";
 
 function MainLayout() {
   return (
@@ -24,6 +25,7 @@ function MainLayout() {
           <Route path="/turfbooking" element={<Turfbooking />} />
           <Route path="/time" element={<TimeSelection />} />
           <Route path="/Aboutus" element={<About />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
         <Footer />
       </CardsProvider>

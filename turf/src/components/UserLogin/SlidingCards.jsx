@@ -1,13 +1,12 @@
-import React, { useContext,useRef } from "react";
-import {useNavigate} from "react-router-dom"
-
-import {CardsContext} from './Context/CardsContext'
+import React, { useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { CardsContext } from "./Context/CardsContext";
 
 function SlidingCards() {
   const navigate = useNavigate();
   const sliderRef = useRef(null);
   const { cards } = useContext(CardsContext);
-  
+
   const scrollLeft = () => {
     sliderRef.current.scrollBy({ left: -300, behavior: "smooth" });
   };
@@ -16,14 +15,16 @@ function SlidingCards() {
     sliderRef.current.scrollBy({ left: 300, behavior: "smooth" });
   };
 
-
   const handleShowAll = () => {
-    // const defaultTitle = "All Recommended Turfs";
-    // const defaultDescription = "Explore all the recommended turfs available for you.";
     navigate("/turf");
   };
 
-  const redirectbooking = (cardTitle, cardDescription, cardAddress,costTurf) => {
+  const redirectbooking = (
+    cardTitle,
+    cardDescription,
+    cardAddress,
+    costTurf
+  ) => {
     navigate("/turfbooking", {
       state: {
         title: cardTitle,
@@ -33,63 +34,74 @@ function SlidingCards() {
       },
     });
   };
-  
 
   return (
-    <div className="pt-6 relative flex-row  mb-10">
-      <div className="mt-4 flex flex-row h-60 items-center justify-between px-5">
+    <div className="pt-6 relative flex-row mb-10">
+      {/* Header Section */}
+      <div className="mt-4 flex justify-between items-center px-5">
         <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-600">
           Recommended For You
         </h1>
         <button
-          className="h-11 px-6 mr-8 bg-gradient-to-r from-blue-300 via via-blue-200 to-blue-100 text-black rounded-lg shadow-md transition-transform duration-300 hover:scale-105"
+          className="h-12 px-6 bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-500 text-white rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl"
           onClick={handleShowAll}
         >
           Show All
         </button>
       </div>
 
-      <button
+      {/* Arrow Buttons */}
+      {/* <button
         onClick={scrollLeft}
-        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-transparent text-white p-2 rounded-full hover:bg-gray-600"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white p-3 rounded-full text-blue-500 hover:bg-blue-100 transition duration-300"
       >
         &lt;
-      </button>
+      </button> */}
       <div
         ref={sliderRef}
-        className="flex w overflow-x-auto space-x-4 p-4 cursor-pointer"
+        className="flex w-full overflow-x-auto space-x-6 p-4 cursor-pointer scroll-smooth"
       >
-        {cards.map((card, index) => (
+        {cards.slice(0, 5).map((card, index) => (
           <div
             key={index}
-            className="flex-shrink-1 w-30 overflow-hidden transition ease-in delay-150 bg-white hover:-translate-y-1 hover:scale-110
-             hover:bg-blue-500 hover:text-grey-600 duration-300 p-3 rounded-xl"
+            className="flex-shrink-0 w-72 bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl hover:translate-y-1 hover:bg-indigo-100"
             onClick={() =>
-              redirectbooking(card.title, card.description, card.address, card.cost)
+              redirectbooking(
+                card.title,
+                card.description,
+                card.address,
+                card.cost
+              )
             }
           >
+            {/* Card Image */}
             <img
               src={card.image}
               alt={card.title}
-              className="w-full h-40 object-cover rounded-md hover:transform transition-transform duration-300 hover:scale-110"
+              className="w-full h-48 object-cover rounded-t-2xl transition-transform duration-300 hover:scale-105"
             />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold  text-black">
+            <div className="p-6">
+              <h3 className="text-2xl font-semibold text-gray-800">
                 {card.title}
               </h3>
-              <p className="mt-1 text-sm text-black hover:text-gray-600">
-                {card.description}
-              </p>
+
+              <p className="mt-2 text-sm text-gray-600">{card.description}</p>
+              <div className="mt-3 flex justify-between items-center">
+                {/* <span className="text-xl font-semibold text-indigo-600">
+                  {card.cost}
+                </span> */}
+              </div>
             </div>
           </div>
         ))}
       </div>
-      <button
+
+      {/* <button
         onClick={scrollRight}
-        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-transparent text-white p-2 rounded-full hover:bg-gray-600"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white p-3 rounded-full text-blue-500 hover:bg-blue-100 transition duration-300"
       >
         &gt;
-      </button>
+      </button> */}
     </div>
   );
 }

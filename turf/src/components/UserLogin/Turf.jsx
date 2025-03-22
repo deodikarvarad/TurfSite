@@ -1,14 +1,24 @@
-import React, { useContext } from 'react';
-import StarIcon from '@mui/icons-material/Star';
-// import {CardsContext} from './Context/CardsContext'
-import { useLocation } from 'react-router-dom';
-import { CardsContext } from './Context/CardsContext';
+import React, { useState, useContext } from "react";
+import { CardsContext } from "./Context/CardsContext";
 import { useNavigate } from "react-router-dom";
+
 function Turf() {
-  
-  const {cards} = useContext(CardsContext) 
+  const { cards } = useContext(CardsContext);
   const navigate = useNavigate();
-  const redirectbooking = (cardTitle, cardDescription, cardAddress, costTurf) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [locationSearch, setLocationSearch] = useState("");
+  const [selectedCost, setSelectedCost] = useState(1600);
+
+  const handleSearchChange = (e) => setSearchTerm(e.target.value);
+  const handleLocationSearch = (e) => setLocationSearch(e.target.value);
+  const handleCostChange = (e) => setSelectedCost(parseInt(e.target.value, 10));
+
+  const redirectbooking = (
+    cardTitle,
+    cardDescription,
+    cardAddress,
+    costTurf
+  ) => {
     navigate("/turfbooking", {
       state: {
         title: cardTitle,
@@ -18,106 +28,109 @@ function Turf() {
       },
     });
   };
- 
 
-  return ( 
+  const filteredCards = cards.filter((card) => {
+    const matchesSearchTerm = card.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesLocation =
+      locationSearch === "" ||
+      card.description.toLowerCase().includes(locationSearch.toLowerCase());
+    const matchesCost =
+      parseInt(card.cost.replace("/hr", ""), 10) <= selectedCost;
 
-<div className="w-full h-full flex items-start">
-        <div className="relative w-1/4 h-full flex flex-col mt-11">  
-        
-        <div className="mt-32 mx-4 border-black bg-slate-300 pb-6 pt-6 rounded-md">
-        <h2 className="pb-8 font-sans text-xl pl-9">Search for Name</h2>
-        <div className="flex justify-center">
-        <input
-        className="w-80 p-2 rounded-md text-black bg-white"
-        type="text"
-        placeholder="Search for Turfs near you..."
-        />
-        </div>
-        </div>
+    return matchesSearchTerm && matchesLocation && matchesCost;
+  });
 
-        <div className="mt-10 mx-4 border-black bg-slate-300  pt-4 rounded-md">
-          <h2 className='pb-4 font-sans text-xl pl-8'>Man Utd</h2>
-          <div className='bg-white pl-8 pt-2'>
-          <input type="checkbox" id="checkbox1" className="form-checkbox h-5 w-5 text-blue-600"/>
-          <label htmlFor="checkbox1" className="text-gray-700 text-xl ">Bruno</label>
-          <br />
-          <br />
-          <input type="checkbox" id="checkbox1" className="form-checkbox h-5 w-5 text-blue-600"/>
-          <label htmlFor="checkbox1" className="text-gray-700 text-xl">Rashford</label>
-          <br />
-          <br />
-          <input type="checkbox" id="checkbox1" className="form-checkbox h-5 w-5 text-blue-600"/>
-          <label htmlFor="checkbox1" className="text-gray-700 text-xl">Antony</label>
-          <br />
-          <br />
-          <input type="checkbox" id="checkbox1" className="form-checkbox h-5 w-5 text-blue-600"/>
-          <label htmlFor="checkbox1" className="text-gray-700 text-xl">Mount</label>
-          <br />
-          <br />
-          <input type="checkbox" id="checkbox1" className="form-checkbox h-5 w-5 text-blue-600"/>
-          <label htmlFor="checkbox1" className="text-gray-700 text-xl">De Ligt</label>
-            
-          </div>
+  return (
+    <div className="flex flex-col md:flex-row justify-between mt-8 mx-4 gap-8">
+      {/* Sidebar with Filters */}
+      <div className="w-full md:w-1/4 bg-slate-100 p-6 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-semibold mb-4">Filters</h2>
 
+        {/* Search Bar for Location */}
+        <div className="mb-6">
+          <h3 className="text-xl mb-2">Search by Location</h3>
+          <input
+            type="text"
+            placeholder="Enter location..."
+            value={locationSearch}
+            onChange={handleLocationSearch}
+            className="w-full p-2 border border-gray-300 rounded-lg"
+          />
         </div>
 
-        <div className="mt-10 mx-4 border-black bg-slate-300  pt-4 rounded-md">
-          <h2 className='pb-4 font-sans text-xl pl-8'>liVARpool</h2>
-          <div className='bg-white pl-8 pt-2'>
-          <input type="checkbox" id="checkbox1" className="form-checkbox h-5 w-5 text-blue-600"/>
-          <label htmlFor="checkbox1" className="text-gray-700 text-xl ">Salah</label>
-          <br />
-          <br />
-          <input type="checkbox" id="checkbox1" className="form-checkbox h-5 w-5 text-blue-600"/>
-          <label htmlFor="checkbox1" className="text-gray-700 text-xl">Van Djik</label>
-          <br />
-          <br />
-          <input type="checkbox" id="checkbox1" className="form-checkbox h-5 w-5 text-blue-600"/>
-          <label htmlFor="checkbox1" className="text-gray-700 text-xl">Gakpo</label>
-          <br />
-          <br />
-          <input type="checkbox" id="checkbox1" className="form-checkbox h-5 w-5 text-blue-600"/>
-          <label htmlFor="checkbox1" className="text-gray-700 text-xl">Jota</label>
-          <br />
-          <br />
-          <input type="checkbox" id="checkbox1" className="form-checkbox h-5 w-5 text-blue-600"/>
-          <label htmlFor="checkbox1" className="text-gray-700 text-xl">CASEMIRO</label>
-            
-          </div>
-
+        {/* Cost Filter with Slider */}
+        <div className="mb-6">
+          <h3 className="text-xl mb-2">Filter by Cost</h3>
+          <input
+            type="range"
+            min="1100"
+            max="1600"
+            step="1"
+            value={selectedCost}
+            onChange={handleCostChange}
+            className="w-full accent-blue-600"
+          />
+          <p className="text-lg font-semibold mt-2 text-blue-600">
+            Cost: ₹{selectedCost}/hr
+          </p>
         </div>
-        </div>
-
-        
-        
-        <div className="flex flex-col justify-center items-center mt-32 w-full ">
-        {cards.map((card, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-lg p-6 flex flex-row space-y-4 w-full mt-10">
-            <div className="w-96 h-48 bg-black rounded-lg">
-              <img src={card.image} alt={card.title} className="object-cover w-full h-full" />
-            </div>
-            <div className='pl-20'>
-              <h2 className="text-xl font-semibold text-black pb-8">{card.title}</h2>
-              <div className="flex">
-                <StarIcon /><StarIcon /><StarIcon /><StarIcon /><StarIcon />
-              </div>
-              <p className="text-gray-600 pb-4">{card.description}</p>
-              <button className="bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600" onClick={() =>
-              redirectbooking(card.title, card.description, card.address, card.cost)
-            }>Book Now</button>
-            </div>
-          </div>
-        ))}
       </div>
-</div>      
-    
-    
-    
-    
-  );    
 
-  
+      {/* Turf Cards Section with Fixed Width & Height */}
+      <div className="w-full md:w-[75%] min-w-[400px]">
+        <div className="min-h-[500px] w-full flex flex-col items-center justify-center bg-white shadow-lg p-6 rounded-lg">
+          {filteredCards.length === 0 ? (
+            // Empty state inside fixed container
+            <div className="flex flex-col items-center justify-center w-full">
+              <p className="text-xl text-gray-600">
+                No turfs found with the selected filters.
+              </p>
+              <p className="text-gray-500 mt-2">
+                Try adjusting your filters or searching a different location.
+              </p>
+            </div>
+          ) : (
+            // Grid Layout remains consistent in size
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+              {filteredCards.map((card, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all"
+                >
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full h-48 object-cover transition-transform duration-500 ease-in-out transform hover:scale-105"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold">{card.title}</h3>
+                    <p className="text-gray-700">{card.description}</p>
+                    <p className="text-gray-500">{card.address}</p>
+                    <p className="text-blue-500 mt-2">{card.cost}</p>
+                    <button
+                      className="w-full mt-4 bg-blue-500 text-white font-medium py-2 rounded-lg hover:bg-blue-600 transition-colors duration-300"
+                      onClick={() =>
+                        redirectbooking(
+                          card.title,
+                          card.description,
+                          card.address,
+                          card.cost
+                        )
+                      }
+                    >
+                      Book Now
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Turf;

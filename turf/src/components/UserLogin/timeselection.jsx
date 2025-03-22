@@ -1,157 +1,239 @@
 import React, { useState, useEffect } from "react";
-import arrow from '../../assets/arrowright.svg';
-import { addDays, format, isSameDay, startOfToday } from 'date-fns';
+import arrow from "../../assets/arrowright.svg";
+import { addDays, format, isSameDay, startOfToday } from "date-fns";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function TimeSelection() {
-    const [availableDates, setAvailableDates] = useState([]);
-    const [selectedDate, setSelectedDate] = useState(null);
-    const [availableTimes, setAvailableTimes] = useState([]);
-    const [selectedTimes, setSelectedTimes] = useState([]); 
-    const [bookedTimes, setBookedTimes] = useState({}); 
+function TimeSelection({ cardTitle, cardDescription, cardAddress, costTurf }) {
+  const navigate = useNavigate();
+  const [availableDates, setAvailableDates] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [availableTimes, setAvailableTimes] = useState([]);
+  const [selectedTimes, setSelectedTimes] = useState([]);
+  const [bookedTimes, setBookedTimes] = useState({});
 
-    
-    const timeSlots = Array.from({ length: 24 }, (_, index) => `${index}:00`);
+  const timeSlots = Array.from({ length: 24 }, (_, index) => `${index}:00`);
 
-    useEffect(() => {
-        
-        const today = startOfToday();
-        const dates = Array.from({ length: 7 }, (_, index) => addDays(today, index));
-        setAvailableDates(dates);
-    }, []);
-
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-        const hour = new Date().getHours();
-
-        if (isSameDay(date, startOfToday())) {
-            
-            const availableTodayTimes = timeSlots.filter((time) => {
-                const [hours] = time.split(':').map(Number);
-                return hours > hour; 
-            });
-            setAvailableTimes(availableTodayTimes);
-        } else {
-            
-            setAvailableTimes(timeSlots);
-        }
-    };
-
-    const handleTimeSelect = (date, time) => {
-        if (selectedTimes.length === 2) {
-            alert("You have already selected check-in and check-out times. Please reset if you want to change them.");
-            return;
-        }
-
-        const selectedTimeObject = { date, time };
-
-        
-        setSelectedTimes((prev) => [...prev, selectedTimeObject]);
-    };
-
-    const handleBookedTime = (date, time) => {
-        
-        setBookedTimes((prev) => ({
-            ...prev,
-            [date]: [...(prev[date] || []), time]
-        }));
-    };
-
-    const isTimeBooked = (date, time) => {
-        return bookedTimes[date]?.includes(time);
-    };
-
-    const isTimeSelected = (date, time) => {
-        return selectedTimes.some((selected) => selected.date === date && selected.time === time);
-    };
-
-    const handleReset = () => {
-        setSelectedTimes([]); 
-    };
-
-    const currentDate = new Date();
-    const monthNames = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
-    const currentMonth = monthNames[currentDate.getMonth];
-
-    return (
-        <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-            
-            <div className="mt-[124.68px] ml-[185px]">
-                <h2 className="font-serif text-2xl text-gray-800">Select Time</h2>
-            </div>
-
-            
-            <div className="flex flex-row">
-                
-                <div className="ml-[180px] mt-[12px] border-2 border-gray-300 w-[745px] h-auto bg-white mb-40 rounded-lg shadow-sm">
-                    
-                    <div className="mt-4 w-[740px] h-[102px] border-b-2 border-gray-300 flex flex-row bg-yellow-200">
-                        <div className="ml-[28px] min-w-min h-6 bg-amber-500 text-white flex items-center justify-center rounded-md shadow-md">
-                            <h2 className="font-semibold">{currentMonth}</h2>
-                        </div>
-                        {/* Mapping Available Dates */}
-                        {availableDates.map((date, index) => (
-                            <div
-                                key={index}
-                                className={`mt-6 w-16 gap-8 ml-7 h-16 border-2 border-gray-300 flex flex-row cursor-pointer transition-transform transform hover:scale-105 ${isSameDay(date, selectedDate) ? 'bg-blue-400' : 'bg-orange-300'}`}
-                                onClick={() => handleDateChange(date)}
-                            >
-                                <div className={`mt-2 flex flex-col gap-4 w-5 h-6 ml-4 content-center ${isSameDay(date, selectedDate) ? 'bg-blue-600 text-white' : 'text-gray-700'}`}>
-                                    <p className="font-normal text-[10px]">{format(date, 'EEEE')}</p> {/* Day of the week */}
-                                    <p className="font-normal text-[15px]">{format(date, 'd')}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    
-                    {selectedDate && availableTimes.length > 0 && (
-                        <div className="mt-4 flex flex-col max-h-[30rem] overflow-y-scroll">
-                            {availableTimes.map((time) => (
-                                <div
-                                    key={time}
-                                    className={`w-full h-[71px] border-b-2 border-gray-300 flex flex-row items-center pt-2 ${isTimeBooked(selectedDate, time) ? 'bg-red-400' : ''} ${isTimeSelected(selectedDate, time) ? 'bg-green-400' : ''} transition-colors duration-200`}
-                                    onClick={() => handleTimeSelect(selectedDate, time)} // Handle time selection
-                                >
-                                    <div className="w-[61px] h-[24px] border-2 border-gray-300 rounded-md mt-2 ml-8 cursor-pointer hover:bg-gray-200 flex items-center justify-center">
-                                        <p className="text-base">{time}</p>
-                                    </div>
-                                    <img className="w-4 h-4  ml-auto mr-5 mt-0" src={arrow} alt="arrow" />
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </div>
-
-                
-                <div className="ml-[30px] mt-[11.5px] border-2 border-gray-300 w-[300px] h-[300px] bg-white rounded-lg shadow-md">
-                    <h2 className="font-serif text-xl ml-2 text-gray-800">Selected Times</h2>
-                    <div className="flex flex-col p-2">
-                        {selectedTimes.length === 2 ? (
-                            <div>
-                                <div className="mt-2 w-[200px] h-[24px] border-2 border-gray-300 rounded-md">
-                                    <p className="text-base">From: {selectedTimes[0].time} on {format(selectedTimes[0].date, 'EEE, MMM d')}</p>
-                                </div>
-                                <div className="mt-2 w-[200px] h-[24px] border-2 border-gray-300 rounded-md">
-                                    <p className="text-base">Till: {selectedTimes[1].time} on {format(selectedTimes[1].date, 'EEE, MMM d')}</p>
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="text-gray-500 text-center">Please Select Time for Booking</div>
-                        )}
-
-                        {selectedTimes.length === 2 && (
-                            <button onClick={handleReset} className="mt-4 bg-red-500 text-white p-2 rounded hover:bg-red-600 transition duration-200">
-                                Change
-                            </button>
-                        )}
-                    </div>
-                </div>
-            </div>
-        </div>
+  useEffect(() => {
+    const today = startOfToday();
+    const dates = Array.from({ length: 7 }, (_, index) =>
+      addDays(today, index)
     );
+    setAvailableDates(dates);
+  }, []);
+
+  const calculateHours = (checkIn, checkOut) => {
+    const formattedCheckInDate = format(checkIn.date, "yyyy-MM-dd");
+    const formattedCheckOutDate = format(checkOut.date, "yyyy-MM-dd");
+
+    const checkInDateTime = new Date(
+      `${formattedCheckInDate}T${checkIn.time.padStart(5, "0")}`
+    );
+    const checkOutDateTime = new Date(
+      `${formattedCheckOutDate}T${checkOut.time.padStart(5, "0")}`
+    );
+
+    if (checkInDateTime < checkOutDateTime) {
+      const diffInMs = checkOutDateTime - checkInDateTime;
+      const diffInHours = diffInMs / (1000 * 60 * 60);
+
+      return diffInHours > 0 ? diffInHours : 0;
+    } else {
+      toast.error("Check-Out time must be greater than Check-In time");
+      setSelectedTimes([]);
+    }
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setSelectedTimes([]);
+
+    const currentHour = new Date().getHours();
+
+    if (isSameDay(date, startOfToday())) {
+      const availableTodayTimes = timeSlots.filter((time) => {
+        const [hours] = time.split(":").map(Number);
+        return hours >= currentHour;
+      });
+      setAvailableTimes(availableTodayTimes);
+    } else {
+      setAvailableTimes(timeSlots);
+    }
+  };
+
+  const handleTimeSelect = (date, time) => {
+    const formattedTime = time.padStart(5, "0");
+
+    if (selectedTimes.length > 0 && selectedTimes[0].date !== date) {
+      setSelectedTimes([]);
+    }
+
+    const selectedTimeObject = { date, time: formattedTime };
+
+    const updatedSelection = selectedTimes.filter(
+      (selected) =>
+        !(
+          selected.date === selectedTimeObject.date &&
+          selected.time === formattedTime
+        )
+    );
+
+    if (updatedSelection.length < selectedTimes.length) {
+      setSelectedTimes(updatedSelection);
+      return;
+    }
+
+    if (selectedTimes.length <= 2) {
+      setSelectedTimes([...selectedTimes, selectedTimeObject]);
+    } else {
+      toast.error(
+        "You have already selected check-in and check-out times. Click again to deselect."
+      );
+    }
+  };
+
+  const handleReset = () => {
+    setSelectedTimes([]);
+  };
+
+  const handleProceed = (cardTitle, cardDescription, cardAddress, costTurf) => {
+    if (selectedTimes.length === 2) {
+      // Directly use selectedTimes[0] and selectedTimes[1] instead of creating new variables
+      const selectedCheckInTime = selectedTimes[0];
+      const selectedCheckOutTime = selectedTimes[1];
+
+      navigate("/payment", {
+        state: {
+          selectedDate: selectedDate,
+          selectedTimes: selectedTimes,
+          checkInTime: selectedCheckInTime.time,
+          checkOutTime: selectedCheckOutTime.time,
+          title: cardTitle,
+          description: cardDescription,
+          address: cardAddress,
+          cost: costTurf,
+        },
+      });
+    } else {
+      toast.error("Please select both check-in and check-out times.");
+    }
+  };
+
+  return (
+    <div className="bg-gray-100 p-6 rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold text-gray-800">Select Time</h2>
+      <div className="flex flex-wrap gap-4 mt-4">
+        <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-xl">
+          <h3 className="font-semibold mb-2">Select a Date</h3>
+          <div className="flex gap-2 overflow-x-auto">
+            {availableDates.map((date, index) => (
+              <button
+                key={index}
+                className={`px-4 py-2 rounded-lg border transition-all ${
+                  isSameDay(date, selectedDate)
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-200"
+                }`}
+                onClick={() => handleDateChange(date)}
+              >
+                {format(date, "EEE, d MMM")}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {selectedDate && (
+          <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-xl">
+            <h3 className="font-semibold mb-2">Select Time Slots</h3>
+            <div className="grid grid-cols-4 gap-2">
+              {availableTimes.map((time) => (
+                <button
+                  key={time}
+                  className={`px-3 py-1 rounded-lg border transition-all ${
+                    selectedTimes.some((t) => t.time === time)
+                      ? "bg-green-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                  onClick={() => handleTimeSelect(selectedDate, time)}
+                  disabled={bookedTimes[time]}
+                >
+                  {time}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="bg-white p-4 rounded-lg shadow-md w-full max-w-xl">
+          <h3 className="font-semibold mb-2">Selected Times</h3>
+          {selectedTimes.length === 2 ? (
+            <div className="space-y-2">
+              <p>
+                Check-in: {selectedTimes[0].time} on{" "}
+                {format(selectedTimes[0].date, "EEE, MMM d")}
+              </p>
+              <p>
+                Check-out: {selectedTimes[1].time} on{" "}
+                {format(selectedTimes[1].date, "EEE, MMM d")}
+              </p>
+              <p className="font-semibold">
+                Total Duration:{" "}
+                {calculateHours(selectedTimes[0], selectedTimes[1])} hours
+                <ToastContainer
+                  position="top-center"
+                  autoClose={3000}
+                  hideProgressBar={true}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                />
+              </p>
+              <div className="flex gap-2">
+                <button
+                  className="bg-red-500 text-white px-4 py-2 rounded-lg"
+                  onClick={handleReset}
+                >
+                  Change
+                </button>
+                <button
+                  className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                  onClick={() =>
+                    handleProceed(
+                      cardTitle,
+                      cardDescription,
+                      cardAddress,
+                      costTurf
+                    )
+                  }
+                >
+                  Proceed to Payment
+                </button>
+              </div>
+              <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
+            </div>
+          ) : (
+            <p className="text-gray-500">
+              Please select check-in and check-out times.
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default TimeSelection;

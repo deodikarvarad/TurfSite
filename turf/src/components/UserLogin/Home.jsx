@@ -5,7 +5,7 @@ import HomeImage from "./HomeImage";
 
 function Home() {
   return (
-    <div className="container mx-auto">
+    <div className="w-full">
       <div id="image-turf" className="w-full min-h-[500px] mb-10">
         <HomeImage />
       </div>
