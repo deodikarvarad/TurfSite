@@ -169,8 +169,8 @@ function Navbar() {
             </div>
 
             <div className="text-blue-500 flex item-center ">
-              {weather ?(
-                <div className=''>
+              {weather ? (
+                <div className="">
                   <p>{defaultCity}:</p>
                   <p>{weather.main.temp}°C</p>
                   <p>{weather.weather[0].description}</p>
@@ -187,7 +187,10 @@ function Navbar() {
               className="text-white hover:text-black flex space-x-4"
             >
               <button
-               className='transition ease-in-out delay-150 bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-500  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300' onClick={handleProfile} onDoubleClick={closeProfile}>
+                className="transition ease-in-out delay-150 bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-500  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300"
+                onClick={handleProfile}
+                // onDoubleClick={closeProfile}
+              >
                 Profile
               </button>
               {dropdownOpen && (
