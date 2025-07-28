@@ -1,31 +1,35 @@
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { CardsContext } from './Context/CardsContext';
-import axios from 'axios';
+import { useContext, useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { CardsContext } from "./Context/CardsContext";
+import axios from "axios";
 
 function Navbar() {
-  const navigate = useNavigate(); 
-  const [dropdownOpen,setdropdownOpen] = useState(false);
-  const [citydropdownOpen,setcitydropdownOpen] = useState(false);
-  const [weather,setWeather] =useState(null);
-  const defaultCity = 'Aurangabad';
+  const navigate = useNavigate();
+  const [dropdownOpen, setdropdownOpen] = useState(false);
+  // const [citydropdownOpen, setcitydropdownOpen] = useState(false);
+  const [weather, setWeather] = useState(null);
+  const defaultCity = "Aurangabad";
   const { cards } = useContext(CardsContext);
-  const [query, setQuery] = useState(""); 
+  const [query, setQuery] = useState("");
+  const profileButtonRef = useRef(null);
+  const dropdownRef = useRef(null);
+  const timeoutRef = useRef(null);
   const [filteredCards, setFilteredCards] = useState([]);
 
-  useEffect(()=>{
-    const fetchweather = async()=>{
-      try{
-        const apiKey = '891e271e52818845def9acc363a13392'
-        const respone = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${apiKey}&units=metric`);
-        setWeather (respone.data);
-      }catch(error){
-    console.error('Error fetching weather data',error);
-    }
-
+  useEffect(() => {
+    const fetchweather = async () => {
+      try {
+        const apiKey = "891e271e52818845def9acc363a13392";
+        const respone = await axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${apiKey}&units=metric`
+        );
+        setWeather(respone.data);
+      } catch (error) {
+        console.error("Error fetching weather data", error);
+      }
     };
     fetchweather();
-  },[defaultCity]);
+  }, [defaultCity]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -36,10 +40,10 @@ function Navbar() {
       );
       setFilteredCards(results);
     } else {
-      setFilteredCards([]); // Clear results if query is empty
+      setFilteredCards([]);
     }
   };
-  
+
   const handleCardClick = (card) => {
     navigate("/turfbooking", {
       state: {
@@ -54,20 +58,20 @@ function Navbar() {
   };
 
   const handleBookTurf = () => {
-    navigate('/home'); 
+    navigate("/home");
   };
 
-  const redirectsignup =()=>{
-    navigate('/usercreate');
-  }
+  const redirectsignup = () => {
+    navigate("/usercreate");
+  };
 
-  const redirectlogin =() =>{
-    navigate('/userlogin');
-  }
+  const redirectlogin = () => {
+    navigate("/userlogin");
+  };
 
-  const redirectprofile=()=>{
-    navigate('/profile')
-  }
+  const redirectprofile = () => {
+    navigate("/profile");
+  };
 
   // const mouseonProfile =()=>{
   //   setdropdownOpen(true)
@@ -76,12 +80,23 @@ function Navbar() {
   // const mouseleaveProfile =()=>{
   //   setdropdownOpen(false)
   // }
-  const handleProfile=()=>{
-    setdropdownOpen(true)
-  }
-  const closeProfile=()=>{
-    setdropdownOpen(false)
-  }
+  const handleProfile = () => {
+    // If the dropdown is already open, don't set the timer and close it
+    if (dropdownOpen) {
+      clearTimeout(timeoutRef.current);
+      setdropdownOpen(false);
+    } else {
+      // Open the dropdown
+      setdropdownOpen(true);
+    }
+  };
+
+  const closeProfile = () => {
+    setdropdownOpen(false);
+  };
+  // const closeProfile = () => {
+  //   setdropdownOpen(false);
+  // };
 
   // const mouseonCity =()=>{
   //   setcitydropdownOpen(true)
@@ -90,7 +105,29 @@ function Navbar() {
   // const mouseleaveCity =()=>{
   //   setcitydropdownOpen(false)
   // }
-  
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        profileButtonRef.current &&
+        !profileButtonRef.current.contains(event.target) &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        // Set a timeout to close the dropdown after 3 seconds
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = setTimeout(() => {
+          setDropdownOpen(false);
+        }, 3000);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      clearTimeout(timeoutRef.current); // Clean up the timeout on unmount
+    };
+  }, []);
 
   return (
     <>
@@ -99,73 +136,81 @@ function Navbar() {
           <div className="container mx-auto flex items-center justify-between px-4">
             <button
               onClick={handleBookTurf}
-              className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r  from-orange-600 via bg-red-700 to-orange-500 ml-0 "
+              className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via bg-red-500 to-yellow-500 ml-0 focus:outline-none"
             >
               BookMyTurf
             </button>
 
-            <div className="flex-grow mx-4 border-black relative">
-      <input
-        className="w-full p-2 rounded-md text-indigo"
-        type="text"
-        value={query}
-        onChange={handleInputChange}
-        placeholder="Search for Turfs near you..."
-      />
-      {/* Show the filtered results */}
-      {filteredCards.length > 0 && (
-        <div className="absolute z-10 bg-white w-full border border-gray-300 rounded-md mt-1 max-h-60 overflow-auto">
-          {filteredCards.map((card, index) => (
-            <div
-              key={index}
-              className="p-2 hover:bg-gray-200 cursor-pointer"
-              onClick={() => handleCardClick(card)  }
-            >
-              <p className="text-black font-semibold">{card.title}</p>
-              <p className="text-gray-600 text-sm">{card.description}</p>
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+            <div className="flex-grow mx-4 relative">
+              <input
+                className="w-full p-2 rounded-md text-indigo"
+                type="text"
+                value={query}
+                onChange={handleInputChange}
+                placeholder="Search for Turfs near you..."
+              />
 
-            <div className="text-blue-500 flex item-center font-sans text-bold pr-2">
-              {weather ?(
-                <div className=''>
-                  <p className='text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via bg-red-700 to-orange-500'>{defaultCity}</p>
-                  <p className='text-lg font-bold '>
-                    {weather.main.temp}°C  _______ {weather.weather[0].description}</p>
+              {filteredCards.length > 0 && (
+                <div className="absolute z-10 bg-white w-full border border-gray-300 rounded-md mt-1 max-h-60 overflow-auto">
+                  {filteredCards.map((card, index) => (
+                    <div
+                      key={index}
+                      className="p-2 hover:bg-gray-200 cursor-pointer"
+                      onClick={() => handleCardClick(card)}
+                    >
+                      <p className="text-black font-semibold">{card.title}</p>
+                      <p className="text-gray-600 text-sm">
+                        {card.description}
+                      </p>
+                    </div>
+                  ))}
                 </div>
-              ):(
-                <p>Loading Weather...</p>
               )}
             </div>
 
-            <div 
-            // onMouseEnter={mouseonProfile}
-            // onMouseLeave={mouseleaveProfile}
-            
-            className="text-white hover:text-black flex space-x-4">
-              
+            <div className="text-blue-500 flex item-center ">
+              {weather ?(
+                <div className=''>
+                  <p>{defaultCity}:</p>
+                  <p>{weather.main.temp}°C</p>
+                  <p>{weather.weather[0].description}</p>
+                </div>
+              ) : (
+                <p>Weather? It's coming... probably</p>
+              )}
+            </div>
+
+            <div
+              // onMouseEnter={mouseonProfile}
+              // onMouseLeave={mouseleaveProfile}
+
+              className="text-white hover:text-black flex space-x-4"
+            >
               <button
-               className='transition ease-in-out delay-150 bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-500  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 ' onClick={handleProfile} onDoubleClick={closeProfile}>
+               className='transition ease-in-out delay-150 bg-gradient-to-r from-blue-500 via-violet-500 to-indigo-500  hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300' onClick={handleProfile} onDoubleClick={closeProfile}>
                 Profile
-                
               </button>
-              {dropdownOpen &&(
-                <div className="absolute right-0 mt-12 w-48 bg-white shadow-lg rounded-lg py-2 z-10">
+              {dropdownOpen && (
+                <div
+                  ref={dropdownRef}
+                  className="absolute right-0 mt-12 w-48 bg-white shadow-lg rounded-lg py-2 z-10"
+                >
                   <ul>
-                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={redirectlogin}>Log In</li>
-                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={redirectsignup}>Sign Up</li>
-                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={redirectprofile}>My Profile</li>
+                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">
+                      Log In
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">
+                      Sign Up
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer">
+                      My Profile
+                    </li>
                   </ul>
                 </div>
               )}
             </div>
           </div>
         </nav>
-
-        
       </div>
     </>
   );

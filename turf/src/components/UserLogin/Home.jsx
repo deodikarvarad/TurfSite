@@ -1,25 +1,26 @@
 import React from "react";
-import { Route,Router,Routes } from "react-router-dom";
-
-
-//import components
+import SportsCollection from "./SportsCollection";
 import SlidingCards from "./SlidingCards";
-import About from "./About";
+import HomeImage from "./HomeImage";
 
-function Home(){
-    return (
-        <>
-        <div className="Slider-turf">
-            <div className="first-div" id="cards-turf"></div>
-            <SlidingCards/>
+function Home() {
+  return (
+    <div className="w-full">
+      <div id="image-turf" className="w-full min-h-[500px] mb-10">
+        <HomeImage />
+      </div>
+
+      <div className="Slider-turf mb-10">
+        <div className="first-div" id="cards-turf">
+          <SlidingCards />
         </div>
-        <div className="About-info">
-            {/* <div className="second-div" id="info">
-                <About/>
-            </div> */}
-        </div>
-        </>
-    )
+      </div>
+
+      <div className="About-info mb-10" id="sports-icons">
+        <SportsCollection />
+      </div>
+    </div>
+  );
 }
 
 export default Home;
